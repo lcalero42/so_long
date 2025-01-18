@@ -27,7 +27,7 @@ $(OBJS_DIR)/%.o: %.c ${HEADERS}
 	@echo "Compiling $<..."
 	@$(CC) $(FLAGS) -c $< -o $@
 
-$(LIBFT): ${HEADERS}
+$(LIBFT):
 	@echo "Building libft..."
 	@$(MAKE) -C $(LIBFT_DIR) all
 
