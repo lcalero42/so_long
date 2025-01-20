@@ -3,11 +3,11 @@ FLAGS = -Wall -Wextra -Werror
 
 NAME = so_long
 
-SRCS = main.c
-HEADERS = so_long.h libft/libft.h
+SRCS = srcs/main.c
+HEADERS = includes/so_long.h libft/libft.h
 
 OBJS_DIR = objects/
-OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
+OBJS = $(SRCS:srcs/%.c=$(OBJS_DIR)%.o)
 
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
@@ -22,8 +22,8 @@ $(NAME) : $(OBJS)
 	@echo "Linking $(NAME)..."
 	$(CC) $(FLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX_FLAGS)
 
-$(OBJS_DIR)/%.o: %.c ${HEADERS}
-	@mkdir -p $(OBJS_DIR)
+$(OBJS_DIR)%.o: srcs/%.c ${HEADERS}
+	@mkdir -p $(OBJS_DIR)  # Ensure the objects directory exists
 	@echo "Compiling $<..."
 	@$(CC) $(FLAGS) -c $< -o $@
 
