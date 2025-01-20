@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 15:55:27 by luis              #+#    #+#             */
-/*   Updated: 2025/01/20 16:39:07 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/20 17:40:25 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,16 @@
 
 int close_window(t_mlx_data *data)
 {
-	mlx_destroy_image(data->mlx ,data->img.img);
-	mlx_destroy_window(data->mlx, data->win);
+	if (data->img.img)
+		mlx_destroy_image(data->mlx ,data->img.img);
+	if (data->win)
+		mlx_destroy_window(data->mlx, data->win);
 	mlx_loop_end(data->mlx);
+	
+	if (data->mlx)
+		mlx_destroy_display(data->mlx);
+	free(data->mlx);
+	exit(0);
 	return (0);
 }
 
@@ -40,5 +47,6 @@ int	main(void)
 	mlx_key_hook(data.win, key_hook, &data);
 	mlx_hook(data.win, 17, 0, close_window, &data);
 	mlx_loop(data.mlx);
+	close_window(&data);
 	return (0);
 }
