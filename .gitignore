@@ -56,3 +56,6 @@ so_long
 
 #folders
 objects
+
+#maps
+*.ber
