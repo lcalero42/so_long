@@ -3,7 +3,7 @@ FLAGS = -Wall -Wextra -Werror
 
 NAME = so_long
 
-SRCS = srcs/main.c
+SRCS = srcs/main.c srcs/init_data.c srcs/parse_map.c libft/get_next_line.c
 HEADERS = includes/so_long.h libft/libft.h
 
 OBJS_DIR = objects/
