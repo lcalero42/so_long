@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:20:00 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/22 17:54:59 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/22 19:08:44 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ char	*ft_strjoin_free(char *s1, char *s2)
 	j = 0;
 	len_s1 = ft_strlen(s1);
 	while (s2[j] != '\n' && s2[j])
-			j++;
+		j++;
 	if (s2[j] == '\n')
-			j++;
+		j++;
 	res = malloc((len_s1 + j + 1) * sizeof(char));
 	if (res == NULL)
-			return (free(s1), NULL);
+		return (free(s1), NULL);
 	ft_memcpy(res, s1, len_s1);
 	ft_memcpy(res + len_s1, s2, j);
 	res[len_s1 + j] = '\0';
@@ -43,13 +43,14 @@ void	ft_update(char *str)
 	i = 0;
 	j = 0;
 	while (str[i] && str[i] != '\n')
-			i++;
+		i++;
 	if (str[i] == '\n')
-			i++;
+		i++;
 	while (str[i])
-			str[j++] = str[i++];
+		str[j++] = str[i++];
 	str[j] = '\0';
 }
+
 char	*get_next_line(int fd)
 {
 	static char		buffer[BUFFER_SIZE + 1] = {0};

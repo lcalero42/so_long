@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:55:35 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/22 18:26:34 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/22 20:35:06 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,27 @@ static char	*ft_strjoin_free(char *s1, char *s2)
 	j = 0;
 	len_s1 = ft_strlen(s1);
 	while (s2[j] != '\n' && s2[j])
-			j++;
+		j++;
 	if (s2[j] == '\n')
-			j++;
+		j++;
 	res = malloc((len_s1 + j + 1) * sizeof(char));
 	if (res == NULL)
-			return (free(s1), NULL);
+		return (free(s1), NULL);
 	ft_memcpy(res, s1, len_s1);
 	ft_memcpy(res + len_s1, s2, j);
 	res[len_s1 + j] = '\0';
 	free(s1);
 	return (res);
+}
+
+static void	put_right_image(char c, t_mlx_data *data, int x, int y)
+{
+	if (c == '1')
+		mlx_put_image_to_window(data->mlx, data->win,
+			data->images[1].img, x, y);
+	else if (c == 'C')
+		mlx_put_image_to_window(data->mlx, data->win,
+			data->images[2].img, x, y);
 }
 
 void	ft_free(char **res)
@@ -72,7 +82,7 @@ int	parse_map(t_map *map)
 	return (0);
 }
 
-int	parse_input(t_map *map, t_mlx_data *data)
+int	render_map(t_map *map, t_mlx_data *data)
 {
 	int	i;
 	int	j;
@@ -87,17 +97,15 @@ int	parse_input(t_map *map, t_mlx_data *data)
 		j = 0;
 		while (map->grid[i][j])
 		{
-			if (map->grid[i][j] == '1')
-				mlx_put_image_to_window(data->mlx, data->win, data->images[1].img, x, y);
-			else if (map->grid[i][j] == 'C')
-				mlx_put_image_to_window(data->mlx, data->win, data->images[2].img, x, y);
+			put_right_image(map->grid[i][j], data, x, y);
 			j++;
-			x += 32;
+			x += 64;
 		}
 		x = 0;
-		y += 32;
+		y += 64;
 		i++;
 	}
-	ft_free(map->grid);
+	map->height = i;
+	map->width = ft_strlen(map->grid[0]);
 	return (0);
 }
