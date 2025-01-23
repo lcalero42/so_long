@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 16:07:11 by luis              #+#    #+#             */
-/*   Updated: 2025/01/23 17:48:51 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/23 22:17:02 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,12 @@ int		render_map(t_map *map, t_mlx_data *data);
 int		parse_map(t_map *map);
 
 int		close_window(t_mlx_data *data);
+
+int		check_map_size(t_mlx_data *data);
+
+int		check_map(t_mlx_data *data);
+
+void	print_error_free(t_mlx_data *data);
 
 int		key_hook(int keycode, t_mlx_data *data);
 

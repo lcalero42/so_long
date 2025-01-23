@@ -6,11 +6,23 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:23:53 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/23 18:43:55 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/23 22:16:36 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+static void	pre_init_images(t_mlx_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < NUM_IMAGES)
+	{
+		data->images[i].img = NULL;
+		i++;
+	}
+}
 
 static void	init_player_images(t_mlx_data *data)
 {
@@ -51,8 +63,13 @@ static void	init_images(t_mlx_data *data)
 
 void	init_data(t_mlx_data *data)
 {
+	data->mlx = NULL;
+    data->win = NULL;
+    data->map.grid = NULL;
+	pre_init_images(data);
 	data->mlx = mlx_init();
 	parse_map(&data->map);
+	check_map(data);
 	data->win = mlx_new_window(data->mlx, 64 * data->map.width,
 			64 * data->map.height, "so_long");
 	init_images(data);

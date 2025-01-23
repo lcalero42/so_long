@@ -4,7 +4,8 @@ FLAGS = -Wall -Wextra -Werror
 NAME = so_long
 
 SRCS = srcs/main.c srcs/init_data.c srcs/parse_map.c libft/get_next_line.c \
-       srcs/close_window.c srcs/hook_handling.c srcs/player.c
+       srcs/close_window.c srcs/hook_handling.c srcs/player.c srcs/map_checkers.c \
+	   srcs/print_error_free.c
 HEADERS = includes/so_long.h libft/libft.h
 
 OBJS_DIR = objects/
@@ -24,7 +25,7 @@ $(NAME) : $(OBJS)
 	$(CC) $(FLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX_FLAGS)
 
 $(OBJS_DIR)%.o: srcs/%.c ${HEADERS}
-	@mkdir -p $(OBJS_DIR)  # Ensure the objects directory exists
+	@mkdir -p $(OBJS_DIR) 
 	@echo "Compiling $<..."
 	@$(CC) $(FLAGS) -c $< -o $@
 

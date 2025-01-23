@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:35:25 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/23 18:30:55 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/23 22:20:47 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	move(int x, int y, t_mlx_data *data)
 where the player starts and initialize its positions*/
 void	check_player_starting(t_mlx_data *data, char c, int i, int j)
 {
-	if (c == 'D')
+	if (c == 'P')
 	{
 		data->player.grid_x = j;
 		data->player.grid_y = i;

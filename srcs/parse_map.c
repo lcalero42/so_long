@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:55:35 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/23 17:24:00 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/23 22:25:38 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	put_right_image(char c, t_mlx_data *data, int x, int y)
 	else if (c == 'C')
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->images[2].img, x, y);
-	else if (c == 'D')
+	else if (c == 'P')
 	{
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->images[3].img, x, y);
@@ -94,6 +94,7 @@ int	parse_map(t_map *map)
 	map->grid = ft_split(res, '\n');
 	map->height = i;
 	map->width = ft_strlen(map->grid[0]);
+	close(fd);
 	free(line);
 	free(res);
 	return (0);
@@ -109,10 +110,10 @@ int	render_map(t_map *map, t_mlx_data *data)
 	x = 0;
 	y = 0;
 	i = 0;
-	while (map->grid[i])
+	while (map->grid[i] && i < 30)
 	{
 		j = 0;
-		while (map->grid[i][j])
+		while (map->grid[i][j] && j < 60)
 		{
 			put_right_image(map->grid[i][j], data, x, y);
 			check_player_starting(data, map->grid[i][j], i, j);
