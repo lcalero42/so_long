@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:23:53 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/23 17:10:39 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/23 18:43:55 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	init_images(t_mlx_data *data)
 			&data->images[0].width,
 			&data->images[0].height);
 	data->images[1].img = mlx_xpm_file_to_image(data->mlx,
-			"ressources/box-1.xpm",
+			"ressources/bush.xpm",
 			&data->images[1].width,
 			&data->images[1].height);
 	data->images[2].img = mlx_xpm_file_to_image(data->mlx,
