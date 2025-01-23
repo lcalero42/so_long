@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:35:25 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/23 22:20:47 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/23 23:43:48 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,9 @@ void	move(int x, int y, t_mlx_data *data)
 		data->player.grid_y++;
 	if (y < 0)
 		data->player.grid_y--;
+	if (data->map.grid[data->player.grid_y][data->player.grid_x] == 'C')
+		data->player.collectibles++;
+	printf("%d\n", data->player.collectibles);
 	determin_player_image(x, y, data);
 }
 

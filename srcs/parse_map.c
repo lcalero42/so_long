@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:55:35 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/23 22:25:38 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/23 23:29:27 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@ static void	put_right_image(char c, t_mlx_data *data, int x, int y)
 			data->images[3].img, x, y);
 		data->player.pos_x = x;
 		data->player.pos_y = y;
+	}
+	else if (c == 'E')
+	{
+		mlx_put_image_to_window(data->mlx, data->win,
+			data->images[7].img, x, y);
 	}
 	else if (c == '0')
 	{

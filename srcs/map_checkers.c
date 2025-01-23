@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 20:34:45 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/23 22:45:16 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/23 23:45:23 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	check_map_size(t_mlx_data *data)
 
 /*This function checks that the shape of the map
 is rectangular and no other*/
-static int check_map_shape(t_mlx_data *data)
+static int	check_map_shape(t_mlx_data *data)
 {
 	int	i;
 	int	j;

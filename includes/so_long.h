@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 16:07:11 by luis              #+#    #+#             */
-/*   Updated: 2025/01/23 22:17:02 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/23 23:38:11 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@
 # define IMG_OBSTACLE 1
 # define IMG_COLLECTIBLE 2
 # define IMG_PLAYER 3
-# define NUM_IMAGES 7
+# define NUM_IMAGES 8
 
 # define BUFFER_SIZE 1
 
+//structs
 typedef struct	s_image {
 	void	*img;
 	int		width;
@@ -47,6 +48,7 @@ typedef struct	s_player {
 	int	pos_y;
 	int	grid_x;
 	int	grid_y;
+	int	collectibles;
 }	t_player;
 
 typedef struct s_mlx_data

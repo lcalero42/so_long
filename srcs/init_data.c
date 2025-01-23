@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:23:53 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/23 22:16:36 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/23 23:45:04 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,17 @@ static void	init_images(t_mlx_data *data)
 			&data->images[2].width,
 			&data->images[2].height);
 	init_player_images(data);
+	data->images[7].img = mlx_xpm_file_to_image(data->mlx,
+			"ressources/hole.xpm",
+			&data->images[7].width,
+			&data->images[7].height);
 }
 
 void	init_data(t_mlx_data *data)
 {
 	data->mlx = NULL;
-    data->win = NULL;
-    data->map.grid = NULL;
+	data->win = NULL;
+	data->map.grid = NULL;
 	pre_init_images(data);
 	data->mlx = mlx_init();
 	parse_map(&data->map);
@@ -77,4 +81,5 @@ void	init_data(t_mlx_data *data)
 	data->camera.pos_y = 0;
 	data->player.pos_x = 0;
 	data->player.pos_y = 0;
+	data->player.collectibles = 0;
 }
