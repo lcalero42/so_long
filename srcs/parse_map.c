@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:55:35 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/22 20:35:06 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/23 17:24:00 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,18 @@ static void	put_right_image(char c, t_mlx_data *data, int x, int y)
 	else if (c == 'C')
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->images[2].img, x, y);
+	else if (c == 'D')
+	{
+		mlx_put_image_to_window(data->mlx, data->win,
+			data->images[3].img, x, y);
+		data->player.pos_x = x;
+		data->player.pos_y = y;
+	}
+	else if (c == '0')
+	{
+		mlx_put_image_to_window(data->mlx, data->win,
+			data->images[0].img, x, y);
+	}
 }
 
 void	ft_free(char **res)
@@ -62,10 +74,12 @@ void	ft_free(char **res)
 int	parse_map(t_map *map)
 {
 	int		fd;
+	int		i;
 	char	*line;
 	char	*tmp;
 	char	*res;
 
+	i = 0;
 	fd = open("map.ber", O_RDONLY);
 	line = get_next_line(fd);
 	res = ft_strdup("");
@@ -75,8 +89,11 @@ int	parse_map(t_map *map)
 		res = ft_strjoin_free(res, tmp);
 		free(tmp);
 		line = get_next_line(fd);
+		i++;
 	}
 	map->grid = ft_split(res, '\n');
+	map->height = i;
+	map->width = ft_strlen(map->grid[0]);
 	free(line);
 	free(res);
 	return (0);
@@ -98,6 +115,7 @@ int	render_map(t_map *map, t_mlx_data *data)
 		while (map->grid[i][j])
 		{
 			put_right_image(map->grid[i][j], data, x, y);
+			check_player_starting(data, map->grid[i][j], i, j);
 			j++;
 			x += 64;
 		}
@@ -105,7 +123,5 @@ int	render_map(t_map *map, t_mlx_data *data)
 		y += 64;
 		i++;
 	}
-	map->height = i;
-	map->width = ft_strlen(map->grid[0]);
 	return (0);
 }

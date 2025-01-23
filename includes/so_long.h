@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 16:07:11 by luis              #+#    #+#             */
-/*   Updated: 2025/01/22 20:42:29 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/23 17:48:51 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # define IMG_BACKGROUND 0
 # define IMG_OBSTACLE 1
 # define IMG_COLLECTIBLE 2
-# define IMG_EXIT 3
-# define NUM_IMAGES 3
+# define IMG_PLAYER 3
+# define NUM_IMAGES 7
 
 # define BUFFER_SIZE 1
 
@@ -37,12 +37,26 @@ typedef struct	s_map {
 	int		height;
 }	t_map;
 
+typedef struct	s_camera {
+	int	pos_x;
+	int	pos_y;
+}	t_camera;
+
+typedef struct	s_player {
+	int	pos_x;
+	int	pos_y;
+	int	grid_x;
+	int	grid_y;
+}	t_player;
+
 typedef struct s_mlx_data
 {
-    void	*mlx;
-    void	*win;
-    t_image	images[NUM_IMAGES];
-	t_map	map;
+    void		*mlx;
+    void		*win;
+    t_image		images[NUM_IMAGES];
+	t_map		map;
+	t_camera	camera;
+	t_player	player;
 }	t_mlx_data;
 
 void	init_data(t_mlx_data *data);
@@ -56,5 +70,11 @@ int		close_window(t_mlx_data *data);
 int		key_hook(int keycode, t_mlx_data *data);
 
 void	ft_free(char **res);
+
+void	move(int x, int y, t_mlx_data *data);
+
+void	determin_movement(t_mlx_data *data, int keycode);
+
+void	check_player_starting(t_mlx_data *data, char c, int i, int j);
 
 #endif

@@ -4,7 +4,7 @@ FLAGS = -Wall -Wextra -Werror
 NAME = so_long
 
 SRCS = srcs/main.c srcs/init_data.c srcs/parse_map.c libft/get_next_line.c \
-       srcs/close_window.c srcs/hook_handling.c
+       srcs/close_window.c srcs/hook_handling.c srcs/player.c
 HEADERS = includes/so_long.h libft/libft.h
 
 OBJS_DIR = objects/
