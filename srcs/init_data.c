@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:23:53 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/23 23:45:04 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/24 00:25:16 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,5 @@ void	init_data(t_mlx_data *data)
 	data->player.pos_x = 0;
 	data->player.pos_y = 0;
 	data->player.collectibles = 0;
+	data->num_collectibles = count_collectibles(data);
 }

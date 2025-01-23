@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 16:07:11 by luis              #+#    #+#             */
-/*   Updated: 2025/01/23 23:38:11 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/24 00:25:04 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_mlx_data
 	t_map		map;
 	t_camera	camera;
 	t_player	player;
+	int			num_collectibles;
 }	t_mlx_data;
 
 void	init_data(t_mlx_data *data);
@@ -70,6 +71,8 @@ int		parse_map(t_map *map);
 int		close_window(t_mlx_data *data);
 
 int		check_map_size(t_mlx_data *data);
+
+int		count_collectibles(t_mlx_data *data);
 
 int		check_map(t_mlx_data *data);
 
@@ -84,5 +87,7 @@ void	move(int x, int y, t_mlx_data *data);
 void	determin_movement(t_mlx_data *data, int keycode);
 
 void	check_player_starting(t_mlx_data *data, char c, int i, int j);
+
+int		can_exit(t_mlx_data *data);
 
 #endif

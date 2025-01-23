@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:35:25 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/23 23:43:48 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/24 00:22:44 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,24 @@ void	determin_movement(t_mlx_data *data, int keycode)
 static int	check_move(int x, int y, t_mlx_data *data)
 {
 	if (x > 0
-		&& data->map.grid[data->player.grid_y][data->player.grid_x + 1] == '1')
+		&& (data->map.grid[data->player.grid_y][data->player.grid_x + 1] == '1'
+		|| (data->map.grid[data->player.grid_y][data->player.grid_x + 1] == 'E'
+		&& !can_exit(data))))
 		return (0);
 	if (x < 0
-		&& data->map.grid[data->player.grid_y][data->player.grid_x - 1] == '1')
+		&& (data->map.grid[data->player.grid_y][data->player.grid_x - 1] == '1'
+		|| (data->map.grid[data->player.grid_y][data->player.grid_x - 1] == 'E'
+		&& !can_exit(data))))
 		return (0);
 	if (y > 0
-		&& data->map.grid[data->player.grid_y + 1][data->player.grid_x] == '1')
+		&& (data->map.grid[data->player.grid_y + 1][data->player.grid_x] == '1'
+		|| (data->map.grid[data->player.grid_y + 1][data->player.grid_x] == 'E'
+		&& !can_exit(data))))
 		return (0);
 	if (y < 0
-		&& data->map.grid[data->player.grid_y - 1][data->player.grid_x] == '1')
+		&& (data->map.grid[data->player.grid_y - 1][data->player.grid_x] == '1'
+		|| (data->map.grid[data->player.grid_y - 1][data->player.grid_x] == 'E'
+		&& !can_exit(data))))
 		return (0);
 	return (1);
 }
@@ -76,8 +84,11 @@ void	move(int x, int y, t_mlx_data *data)
 	if (y < 0)
 		data->player.grid_y--;
 	if (data->map.grid[data->player.grid_y][data->player.grid_x] == 'C')
+	{
 		data->player.collectibles++;
-	printf("%d\n", data->player.collectibles);
+		data->map.grid[data->player.grid_y][data->player.grid_x] = '0';
+	}
+	//printf("%d\n", data->player.collectibles);
 	determin_player_image(x, y, data);
 }
 
@@ -89,6 +100,5 @@ void	check_player_starting(t_mlx_data *data, char c, int i, int j)
 	{
 		data->player.grid_x = j;
 		data->player.grid_y = i;
-		printf("%d\n%d\n", data->player.pos_x, data->player.pos_y);
 	}
 }
