@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:23:53 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/24 04:28:43 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/24 04:54:28 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ void	init_data(t_mlx_data *data)
 	data->map.grid = NULL;
 	pre_init_images(data);
 	data->mlx = mlx_init();
+	if (!data->mlx)
+		print_error_free(data, "Error initializin mlx\n");
 	parse_map(&data->map);
 	data->collectibles = count_collectibles(data);
 	check_map(data);
@@ -81,4 +83,5 @@ void	init_data(t_mlx_data *data)
 	data->player.pos_x = 0;
 	data->player.pos_y = 0;
 	data->player.collectibles = 0;
+	data->player.nb_moves = 0;
 }

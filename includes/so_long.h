@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 16:07:11 by luis              #+#    #+#             */
-/*   Updated: 2025/01/24 04:28:51 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/24 05:20:41 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_player
 	int	grid_x;
 	int	grid_y;
 	int	collectibles;
+	int	nb_moves;
 }	t_player;
 
 typedef struct s_mlx_data
@@ -81,7 +82,9 @@ int		check_map(t_mlx_data *data);
 
 int		is_path_possible(t_mlx_data *data);
 
-void	print_error_free(t_mlx_data *data);
+void	print_error_free(t_mlx_data *data, char *s);
+
+void	update_print_moves(t_mlx_data *data);
 
 int		key_hook(int keycode, t_mlx_data *data);
 

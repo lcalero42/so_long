@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 20:34:45 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/24 01:46:00 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/24 04:40:15 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ int	check_map_size(t_mlx_data *data)
 	while (data->map.grid[i])
 	{
 		if (i > 30)
-			return (print_error_free(data), 0);
+			print_error_free(data, "Error : height too high\n");
 		j = 0;
 		while (data->map.grid[i][j])
 			j++;
 		if (j > 60)
-			return (print_error_free(data), 0);
+			print_error_free(data, "Error : width too high\n");
 		i++;
 	}
 	return (1);
@@ -48,7 +48,7 @@ static int	check_map_shape(t_mlx_data *data)
 		while (data->map.grid[j])
 		{
 			if (ft_strlen(data->map.grid[i]) != ft_strlen(data->map.grid[j]))
-				return (print_error_free(data), 0);
+				print_error_free(data, "Error : map is not rectangular\n");
 			j++;
 		}
 		i++;
@@ -82,18 +82,18 @@ int	check_map(t_mlx_data *data)
 	i = 0;
 	check_map_size(data);
 	check_map_shape(data);
-	if (!is_path_possible(data))
-		print_error_free(data);
 	while (data->map.grid[i])
 	{
 		j = 0;
 		while (data->map.grid[i][j])
 		{
 			if (!check_wrong_input(data->map.grid[i][j], i, j, data))
-				print_error_free(data);
+				print_error_free(data, "Error : Wrong input entered\n");
 			j++;
 		}
 		i++;
 	}
+	if (!is_path_possible(data))
+		print_error_free(data, "Error : no path possible\n");
 	return (1);
 }

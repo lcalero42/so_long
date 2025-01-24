@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:35:25 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/24 00:30:00 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/24 05:21:00 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	move(int x, int y, t_mlx_data *data)
 	determin_player_image(x, y, data);
 	if (!check_move(x, y, data))
 		return ;
+	update_print_moves(data);
 	mlx_put_image_to_window(data->mlx, data->win,
 		data->images[0].img, data->player.pos_x, data->player.pos_y);
 	data->player.pos_x += x;
