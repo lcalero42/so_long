@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 23:52:57 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/24 00:25:38 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/24 02:20:45 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ int	count_collectibles(t_mlx_data *data)
 	return (cpt);
 }
 
-#include <stdio.h>
 int	can_exit(t_mlx_data *data)
 {
-	printf("%d\n%d\n", data->player.collectibles, data->num_collectibles);
-	return (data->player.collectibles == data->num_collectibles);
+	return (data->player.collectibles == data->collectibles);
 }

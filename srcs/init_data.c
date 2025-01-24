@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:23:53 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/24 00:25:16 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/24 02:23:47 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	init_data(t_mlx_data *data)
 	pre_init_images(data);
 	data->mlx = mlx_init();
 	parse_map(&data->map);
+	data->collectibles = count_collectibles(data);
 	check_map(data);
 	data->win = mlx_new_window(data->mlx, 64 * data->map.width,
 			64 * data->map.height, "so_long");
@@ -82,5 +83,4 @@ void	init_data(t_mlx_data *data)
 	data->player.pos_x = 0;
 	data->player.pos_y = 0;
 	data->player.collectibles = 0;
-	data->num_collectibles = count_collectibles(data);
 }
