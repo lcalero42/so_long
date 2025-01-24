@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:23:53 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/24 02:23:47 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/24 04:28:43 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,6 @@ void	init_data(t_mlx_data *data)
 	data->win = mlx_new_window(data->mlx, 64 * data->map.width,
 			64 * data->map.height, "so_long");
 	init_images(data);
-	data->camera.pos_x = 0;
-	data->camera.pos_y = 0;
 	data->player.pos_x = 0;
 	data->player.pos_y = 0;
 	data->player.collectibles = 0;
