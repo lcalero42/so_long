@@ -6,7 +6,7 @@
 /*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 02:07:24 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/26 00:12:12 by luis             ###   ########.fr       */
+/*   Updated: 2025/01/26 00:13:39 by luis             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	is_path_possible(t_mlx_data *data)
 	int	is_path_possible;
 	
 	if (!is_exit_possible(data))
-		return (0);
+		return (print_error_free(data, "No exit possible\n"), 0);
 	is_visited = malloc(sizeof(int *) * data->map.height);
 	init_visited(data, is_visited);
 	start_x = -1;
