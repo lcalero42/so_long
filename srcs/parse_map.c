@@ -6,7 +6,7 @@
 /*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:55:35 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/25 23:36:39 by luis             ###   ########.fr       */
+/*   Updated: 2025/01/26 00:33:29 by luis             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	parse_map(t_mlx_data *data)
 	i = 0;
 	fd = open("map.ber", O_RDONLY);
 		if (fd < 0)
-			print_error_free(data, "Wrong entry file\n");
+			print_error_free(data, "Error : Wrong entry file\n");
 	line = get_next_line(fd);
 	res = ft_strdup("");
 	while (line && *line != '\n')

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checkers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 20:34:45 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/24 04:40:15 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/26 00:30:08 by luis             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,33 @@ static int	check_wrong_input(char c, int i, int j, t_mlx_data *data)
 	return (1);
 }
 
+static void	check_duplicates(t_mlx_data *data)
+{
+	int	i;
+	int	j;
+	int	cpt_exit;
+	int	cpt_start;
+
+	i = 0;
+	cpt_exit = 0;
+	cpt_start = 0;
+	while (data->map.grid[i])
+	{
+		j = 0;
+		while (data->map.grid[i][j])
+		{
+			if (data->map.grid[i][j] == 'E')
+				cpt_exit++;
+			if (data->map.grid[i][j] == 'P')
+				cpt_start++;
+			j++;
+		}
+		i++;
+	}
+	if ((cpt_exit != 1) || (cpt_start != 1))
+		print_error_free(data, "Error : number of exit and start must be one\n");
+}
+
 /*This function processes all the map checking logic*/
 int	check_map(t_mlx_data *data)
 {
@@ -82,6 +109,7 @@ int	check_map(t_mlx_data *data)
 	i = 0;
 	check_map_size(data);
 	check_map_shape(data);
+	check_duplicates(data);
 	while (data->map.grid[i])
 	{
 		j = 0;
