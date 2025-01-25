@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 16:07:11 by luis              #+#    #+#             */
-/*   Updated: 2025/01/24 05:20:41 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/25 23:34:45 by luis             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	init_data(t_mlx_data *data);
 
 int		render_map(t_map *map, t_mlx_data *data);
 
-int		parse_map(t_map *map);
+int		parse_map(t_mlx_data *data);
 
 int		close_window(t_mlx_data *data);
 

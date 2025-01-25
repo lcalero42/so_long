@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:55:35 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/23 23:29:27 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/25 23:36:39 by luis             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	ft_free(char **res)
 	free(res);
 }
 
-int	parse_map(t_map *map)
+int	parse_map(t_mlx_data *data)
 {
 	int		fd;
 	int		i;
@@ -86,6 +86,8 @@ int	parse_map(t_map *map)
 
 	i = 0;
 	fd = open("map.ber", O_RDONLY);
+		if (fd < 0)
+			print_error_free(data, "Wrong entry file\n");
 	line = get_next_line(fd);
 	res = ft_strdup("");
 	while (line && *line != '\n')
@@ -96,13 +98,11 @@ int	parse_map(t_map *map)
 		line = get_next_line(fd);
 		i++;
 	}
-	map->grid = ft_split(res, '\n');
-	map->height = i;
-	map->width = ft_strlen(map->grid[0]);
+	data->map.grid = ft_split(res, '\n');
+	data->map.height = i;
+	data->map.width = ft_strlen(data->map.grid[0]);
 	close(fd);
-	free(line);
-	free(res);
-	return (0);
+	return(free(line), free(res), 0);
 }
 
 int	render_map(t_map *map, t_mlx_data *data)

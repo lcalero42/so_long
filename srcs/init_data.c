@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:23:53 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/24 04:54:28 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/25 23:34:54 by luis             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	init_data(t_mlx_data *data)
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		print_error_free(data, "Error initializin mlx\n");
-	parse_map(&data->map);
+	parse_map(data);
 	data->collectibles = count_collectibles(data);
 	check_map(data);
 	data->win = mlx_new_window(data->mlx, 64 * data->map.width,
