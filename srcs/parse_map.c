@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:55:35 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/26 00:33:29 by luis             ###   ########.fr       */
+/*   Updated: 2025/01/27 00:40:30 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,8 @@ int	parse_map(t_mlx_data *data)
 		line = get_next_line(fd);
 		i++;
 	}
-	data->map.grid = ft_split(res, '\n');
 	data->map.height = i;
+	data->map.grid = ft_split(res, '\n');
 	data->map.width = ft_strlen(data->map.grid[0]);
 	close(fd);
 	return(free(line), free(res), 0);
