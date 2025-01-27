@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:05:53 by lcalero           #+#    #+#             */
-/*   Updated: 2024/11/20 10:19:05 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/27 17:04:38 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static char	*ft_strdup_size(const char *s, unsigned int start, char c, int j)
 	int		len;
 
 	len = ft_len(s, j, c);
-	res = (char *)malloc((len + 1) * sizeof(char));
+	res = (char *)ft_calloc((len + 1), sizeof(char));
 	if (res == NULL)
 		return (NULL);
 	i = 0;
@@ -89,7 +89,7 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	k = 0;
-	res = (char **)malloc((count_words(s, c) + 1) * sizeof(char *));
+	res = (char **)ft_calloc((count_words(s, c) + 1), sizeof(char *));
 	if (res == NULL)
 		return (NULL);
 	while (k < count_words(s, c))

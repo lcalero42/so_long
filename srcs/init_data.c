@@ -6,12 +6,13 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:23:53 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/27 00:22:17 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/27 18:41:15 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 #include <stdio.h>
+#include <string.h>
 
 static void	init_player_images(t_mlx_data *data)
 {
@@ -54,15 +55,21 @@ static void	init_images(t_mlx_data *data)
 			&data->images[7].height);
 }
 
-void	init_data(t_mlx_data *data)
+void	init_data(t_mlx_data *data, char *file_name)
 {
-	ft_bzero(data, sizeof(t_mlx_data));
+	memset(data, 0, sizeof(t_mlx_data));
+	data->map.grid = NULL;
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		print_error_free(data, "Error initializing mlx\n");
-	parse_map(data);
+	parse_map(data, file_name);
 	data->collectibles = count_collectibles(data);
 	check_map(data);
+	for (int i = 0; i < data->map.height; i++)
+	{
+    	printf("Row %d: %s\n", i, data->map.grid[i]);
+	}
+	printf("width : %d --- height : %d\n", data->map.width, data->map.height);
 	data->win = mlx_new_window(data->mlx, 64 * data->map.width,
 			64 * data->map.height, "so_long");
 	if (!data->win)

@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:35:25 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/24 05:21:00 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/27 18:45:05 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ void	move(int x, int y, t_mlx_data *data)
 		data->map.grid[data->player.grid_y][data->player.grid_x] = '0';
 	}
 	determin_player_image(x, y, data);
+	if (data->map.grid[data->player.grid_y][data->player.grid_x] == 'E')
+		close_window(data);
 }
 
 /*This function is used in the map parsing and checks

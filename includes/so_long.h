@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 16:07:11 by luis              #+#    #+#             */
-/*   Updated: 2025/01/25 23:34:45 by luis             ###   ########.fr       */
+/*   Updated: 2025/01/27 18:40:56 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ typedef struct s_mlx_data
 	int			collectibles;
 }	t_mlx_data;
 
-void	init_data(t_mlx_data *data);
+void	init_data(t_mlx_data *data, char *file_name);
 
 int		render_map(t_map *map, t_mlx_data *data);
 
-int		parse_map(t_mlx_data *data);
+int		parse_map(t_mlx_data *data, char *file_name);
 
 int		close_window(t_mlx_data *data);
 
