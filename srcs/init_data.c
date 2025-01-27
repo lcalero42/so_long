@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:23:53 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/27 18:41:15 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/27 19:46:29 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,6 @@ void	init_data(t_mlx_data *data, char *file_name)
 	parse_map(data, file_name);
 	data->collectibles = count_collectibles(data);
 	check_map(data);
-	for (int i = 0; i < data->map.height; i++)
-	{
-    	printf("Row %d: %s\n", i, data->map.grid[i]);
-	}
-	printf("width : %d --- height : %d\n", data->map.width, data->map.height);
 	data->win = mlx_new_window(data->mlx, 64 * data->map.width,
 			64 * data->map.height, "so_long");
 	if (!data->win)
