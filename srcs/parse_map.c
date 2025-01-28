@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:55:35 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/28 18:50:09 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 19:11:00 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	ft_free(char **res)
 	}
 	free(res);
 }
-#include <stdio.h>
+
 /*This function parses the string in the file that
 has been passed in parameter and puts all the elements
 in the grid in the map struct*/

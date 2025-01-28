@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 05:18:19 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/28 17:59:19 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 19:11:25 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	skip_newlines(char **line, int fd)
 	char	*tmp;
 
 	if (!line || !*line)
-		return;
+		return ;
 	while (*line && !ft_strncmp(*line, "\n", ft_strlen(*line)))
 	{
 		tmp = *line;
