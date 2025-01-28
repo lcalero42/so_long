@@ -3,6 +3,13 @@ FLAGS = -Wall -Wextra -Werror
 
 NAME = so_long
 
+RESET = \033[0m
+RED = \033[31m
+GREEN = \033[32m
+BLUE = \033[34m
+CYAN = \033[36m
+BOLD = \033[1m
+
 SRCS = srcs/main.c srcs/init_data.c srcs/parse_map.c libft/get_next_line.c \
        srcs/close_window.c srcs/hook_handling.c srcs/player.c srcs/map_checkers.c \
        srcs/print_error_free.c srcs/collectibles.c srcs/is_path_possible.c \
@@ -16,11 +23,6 @@ OBJS_DIR = objects/
 OBJS = $(SRCS:srcs/%.c=$(OBJS_DIR)%.o)
 
 LIBFT_DIR = libft
-LIBFT_SRCS = $(LIBFT_DIR)/ft_bzero.c $(LIBFT_DIR)/ft_strlen.c $(LIBFT_DIR)/ft_split.c \
-             $(LIBFT_DIR)/ft_itoa.c $(LIBFT_DIR)/ft_putnbr_fd.c $(LIBFT_DIR)/ft_putstr_fd.c \
-             $(LIBFT_DIR)/ft_memcpy.c $(LIBFT_DIR)/ft_strdup.c $(LIBFT_DIR)/ft_strchr.c \
-             $(LIBFT_DIR)/ft_calloc.c $(LIBFT_DIR)/ft_putchar_fd.c
-LIBFT_OBJS = $(LIBFT_SRCS:$(LIBFT_DIR)/%.c=$(OBJS_DIR)%.o)
 LIBFT = $(LIBFT_DIR)/libft.a
 
 MLX_DIR = minilibx-linux
@@ -29,39 +31,39 @@ MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
 all: $(LIBFT) $(MLX_LIB) $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
-	@echo "Linking $(NAME)..."
+$(NAME): $(OBJS)
+	@echo "$(BOLD)$(BLUE)Linking $(NAME)...$(RESET)"
 	@$(CC) $(FLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX_FLAGS)
 
 $(OBJS_DIR)%.o: srcs/%.c ${HEADERS}
 	@mkdir -p $(OBJS_DIR)
-	@echo "Compiling $<..."
+	@echo "$(BOLD)$(GREEN)Compiling$(RESET) $<..."
 	@$(CC) $(FLAGS) -c $< -o $@
 
-$(OBJS_DIR)%.o: $(LIBFT_DIR)/%.c
+$(OBJS_DIR)libft/%.o: $(LIBFT_DIR)/%.c
 	@mkdir -p $(OBJS_DIR)
-	@echo "Compiling $< from libft..."
+	@echo "$(BOLD)$(GREEN)Compiling$(RESET) $< from libft..."
 	@$(CC) $(FLAGS) -c $< -o $@
 
-$(LIBFT): $(LIBFT_OBJS)
-	@echo "Building libft..."
-	@$(AR) rcs $(LIBFT) $(LIBFT_OBJS)
+$(LIBFT):
+	@echo "$(BOLD)$(CYAN)Building libft...$(RESET)"
+	@$(MAKE) -C $(LIBFT_DIR) all >/dev/null 2>&1
 
 $(MLX_LIB):
-	@echo "Building minilibx-linux..."
-	@$(MAKE) -C $(MLX_DIR)
+	@echo "$(BOLD)$(CYAN)Building minilibx-linux...$(RESET)"
+	@$(MAKE) -C $(MLX_DIR) >/dev/null 2>&1
 
 clean:
-	@echo "Cleaning object files..."
+	@echo "$(BOLD)$(RED)Cleaning object files...$(RESET)"
 	@rm -rf $(OBJS_DIR)
-	@$(MAKE) -C $(LIBFT_DIR) clean
-	@$(MAKE) -C $(MLX_DIR) clean
+	@$(MAKE) -C $(LIBFT_DIR) clean >/dev/null 2>&1
+	@$(MAKE) -C $(MLX_DIR) clean >/dev/null 2>&1
 
 fclean: clean
 	@echo "Cleaning binaries..."
 	@rm -f $(NAME)
 	@rm -f $(LIBFT)
-	@$(MAKE) -C $(LIBFT_DIR) fclean
+	@$(MAKE) -C $(LIBFT_DIR) fclean >/dev/null 2>&1
 
 re: fclean all
 
