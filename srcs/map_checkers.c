@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 20:34:45 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/28 17:16:41 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 19:35:19 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,11 +108,8 @@ int	check_map(t_mlx_data *data)
 {
 	int	i;
 	int	j;
-
+		
 	i = 0;
-	check_map_size(data);
-	check_map_shape(data);
-	check_duplicates(data);
 	while (data->map.grid[i])
 	{
 		j = 0;
@@ -124,6 +121,9 @@ int	check_map(t_mlx_data *data)
 		}
 		i++;
 	}
+	check_map_size(data);
+	check_map_shape(data);
+	check_duplicates(data);
 	if (!is_path_possible(data))
 		print_error_free(data, "Error\nNo path possible\n");
 	return (1);

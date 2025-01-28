@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 05:18:19 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/28 19:11:25 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 19:12:37 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ void	player_win(t_mlx_data *data)
 	close_window(data);
 }
 
+/*This functions skips all the newlines in the file
+that is being read to be able to render the map even with
+newlines separating lines*/
 void	skip_newlines(char **line, int fd)
 {
 	char	*tmp;

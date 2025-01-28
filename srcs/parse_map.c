@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:55:35 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/28 19:11:00 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 19:34:29 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,13 +101,14 @@ int	parse_map(t_mlx_data *data, char *file_name)
 		data->map.height++;
 		tmp = line;
 		skip_newlines(&tmp, fd);
-		if (data->map.width == 0)
-			data->map.width = ft_strlen(tmp) - 1;
 		res = ft_strjoin_free(res, tmp);
 		free(tmp);
 		line = get_next_line(fd);
 	}
 	data->map.grid = ft_split(res, '\n');
+	if (!res[0])
+		print_error_free(data, "Error\nEmpty map\n");
+	data->map.width = ft_strlen(data->map.grid[0]);
 	close(fd);
 	return (free(line), free(res), 0);
 }
