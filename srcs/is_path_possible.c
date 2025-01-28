@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 02:07:24 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/27 19:30:30 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 12:17:49 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	dfs_exit(int x, int y, t_mlx_data *data, int **is_visited)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	is_visited[y][x] = 1;
 	if (is_traversable_exit(x, y - 1, data, is_visited))
@@ -83,7 +83,7 @@ int	is_path_possible(t_mlx_data *data)
 	int	start_y;
 	int	**is_visited;
 	int	is_path_possible;
-	
+
 	if (!is_exit_possible(data))
 		return (print_error_free(data, "Error : No exit possible\n"), 0);
 	is_visited = malloc(sizeof(int *) * data->map.height);
@@ -92,7 +92,8 @@ int	is_path_possible(t_mlx_data *data)
 	start_y = -1;
 	find_player_pos(data, &start_x, &start_y);
 	dfs(start_x, start_y, data, is_visited);
-	is_path_possible = (count_collec(data, is_visited) == data->collectibles);
+	is_path_possible = (count_possible_collec(data, is_visited)
+			== data->collectibles);
 	ft_free_visited(is_visited, data);
 	return (is_path_possible);
 }

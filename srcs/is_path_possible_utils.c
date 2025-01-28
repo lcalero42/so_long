@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:52:56 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/24 21:24:09 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 12:15:45 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	init_visited(t_mlx_data *data, int **is_visited)
 	}
 }
 
-int	count_collec(t_mlx_data *data, int **is_visited)
+int	count_possible_collec(t_mlx_data *data, int **is_visited)
 {
 	int	i;
 	int	j;

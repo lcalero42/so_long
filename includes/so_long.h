@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 16:07:11 by luis              #+#    #+#             */
-/*   Updated: 2025/01/27 18:40:56 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 12:15:52 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int		render_map(t_map *map, t_mlx_data *data);
 
 int		parse_map(t_mlx_data *data, char *file_name);
 
+int		check_map(t_mlx_data *data);
+
 int		close_window(t_mlx_data *data);
 
 int		check_map_size(t_mlx_data *data);
@@ -76,9 +78,7 @@ void	find_player_pos(t_mlx_data *data, int *x, int *y);
 
 void	init_visited(t_mlx_data *data, int **is_visited);
 
-int		count_collec(t_mlx_data *data, int **is_visited);
-
-int		check_map(t_mlx_data *data);
+int		count_possible_collec(t_mlx_data *data, int **is_visited);
 
 int		is_path_possible(t_mlx_data *data);
 

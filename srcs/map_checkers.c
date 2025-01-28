@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checkers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 20:34:45 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/26 00:30:08 by luis             ###   ########.fr       */
+/*   Updated: 2025/01/28 12:18:30 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,8 @@ static void	check_duplicates(t_mlx_data *data)
 		i++;
 	}
 	if ((cpt_exit != 1) || (cpt_start != 1))
-		print_error_free(data, "Error : number of exit and start must be one\n");
+		print_error_free(data,
+			"Error : number of exit and start must be one\n");
 }
 
 /*This function processes all the map checking logic*/

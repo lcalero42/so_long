@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:55:35 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/27 18:40:43 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 12:19:15 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ int	parse_map(t_mlx_data *data, char *file_name)
 	char	*res;
 
 	fd = open(file_name, O_RDONLY);
-		if (fd < 0)
-			print_error_free(data, "Error : Wrong entry file\n");
+	if (fd < 0)
+		print_error_free(data, "Error : Wrong entry file\n");
 	line = get_next_line(fd);
 	res = ft_strdup("");
 	while (line && *line != '\n')
@@ -100,7 +100,7 @@ int	parse_map(t_mlx_data *data, char *file_name)
 	}
 	data->map.grid = ft_split(res, '\n');
 	close(fd);
-	return(free(line), free(res), 0);
+	return (free(line), free(res), 0);
 }
 
 int	render_map(t_map *map, t_mlx_data *data)

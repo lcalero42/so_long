@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 15:55:27 by luis              #+#    #+#             */
-/*   Updated: 2025/01/27 18:44:15 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 12:18:16 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	main(int ac, char **av)
 {
 	t_mlx_data	data;
-	
+
 	if (ac != 2)
 		return (print_error_free(&data, "Error : you must enter a file"), 1);
 	init_data(&data, av[1]);
