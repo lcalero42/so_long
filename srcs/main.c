@@ -6,12 +6,11 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 15:55:27 by luis              #+#    #+#             */
-/*   Updated: 2025/01/28 12:18:16 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 13:19:55 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-#include <stdio.h>
 
 int	main(int ac, char **av)
 {

@@ -6,12 +6,13 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:52:56 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/28 12:15:45 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 14:03:26 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+/*This functions checks if a position is traversable or not*/
 int	is_traversable(int x, int y, t_mlx_data *data, int **is_visited)
 {
 	return ((x >= 0) && (x < data->map.width) && (y < data->map.height)
@@ -19,6 +20,8 @@ int	is_traversable(int x, int y, t_mlx_data *data, int **is_visited)
 		&& (!is_visited[y][x]));
 }
 
+/*This function uses Depth-First-Search algorithm to mark all
+the boxes that can be visited by the player*/
 void	dfs(int x, int y, t_mlx_data *data, int **is_visited)
 {
 	is_visited[y][x] = 1;
@@ -32,6 +35,9 @@ void	dfs(int x, int y, t_mlx_data *data, int **is_visited)
 		dfs(x + 1, y, data, is_visited);
 }
 
+/*This function finds the player starting position and initializes
+x and y to these positions (this function is only used in the pathfinding
+algorithms, this is not the function that set the player positions !)*/
 void	find_player_pos(t_mlx_data *data, int *x, int *y)
 {
 	int	i;
@@ -55,25 +61,29 @@ void	find_player_pos(t_mlx_data *data, int *x, int *y)
 	}
 }
 
+/*This function initializes the visited 2D array and sets all
+its values to zero (which means not visited yet)*/
 void	init_visited(t_mlx_data *data, int **is_visited)
 {
 	int	i;
-	int	j;
 
 	i = 0;
 	while (data->map.grid[i])
 	{
-		j = 0;
 		is_visited[i] = malloc(sizeof(int) * data->map.width);
-		while (j < data->map.width)
+		if (!is_visited[i])
 		{
-			is_visited[i][j] = 0;
-			j++;
+			while (--i >= 0)
+				free(is_visited[i]);
+			return ;
 		}
+		ft_bzero(is_visited[i], data->map.width * sizeof(int));
 		i++;
 	}
 }
 
+/*This function counts all the possible collectibles that the player
+can collect in the given map*/
 int	count_possible_collec(t_mlx_data *data, int **is_visited)
 {
 	int	i;

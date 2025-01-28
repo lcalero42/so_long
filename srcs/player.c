@@ -6,25 +6,28 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:35:25 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/27 18:45:05 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 14:01:16 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-#include <stdio.h>
 
+/*This functions determins which movement has been processed and
+calls the right moving logic in consequence*/
 void	determin_movement(t_mlx_data *data, int keycode)
 {
-	if (keycode == 119)
+	if (keycode == W_KEY)
 		move(0, -64, data);
-	if (keycode == 115)
+	if (keycode == S_KEY)
 		move(0, 64, data);
-	if (keycode == 97)
+	if (keycode == A_KEY)
 		move(-64, 0, data);
-	if (keycode == 100)
+	if (keycode == D_KEY)
 		move(64, 0, data);
 }
 
+/*This function checks if the player can move to the position where he
+wants to move or not*/
 static int	check_move(int x, int y, t_mlx_data *data)
 {
 	if (x > 0
@@ -50,6 +53,8 @@ static int	check_move(int x, int y, t_mlx_data *data)
 	return (1);
 }
 
+/*This functions determins which image must be rendered to the screen
+considering the direction the player is going*/
 static void	determin_player_image(int x, int y, t_mlx_data *data)
 {
 	if (x > 0)
@@ -66,6 +71,8 @@ static void	determin_player_image(int x, int y, t_mlx_data *data)
 			data->images[4].img, data->player.pos_x, data->player.pos_y);
 }
 
+/*This function applies all the moving logic and updates the
+coordinates of the player in the screen and in the grid*/
 void	move(int x, int y, t_mlx_data *data)
 {
 	determin_player_image(x, y, data);
@@ -91,7 +98,7 @@ void	move(int x, int y, t_mlx_data *data)
 	}
 	determin_player_image(x, y, data);
 	if (data->map.grid[data->player.grid_y][data->player.grid_x] == 'E')
-		close_window(data);
+		player_win(data);
 }
 
 /*This function is used in the map parsing and checks

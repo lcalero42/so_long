@@ -6,12 +6,14 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 02:07:24 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/28 12:17:49 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 13:50:05 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+/*This function frees all the data in the 2D array "arr"
+passed in parameter*/
 static void	ft_free_visited(int **arr, t_mlx_data *data)
 {
 	int	i;
@@ -25,12 +27,18 @@ static void	ft_free_visited(int **arr, t_mlx_data *data)
 	free(arr);
 }
 
+/*This functions checks if a position is traversable or not without
+counting the exit as an obstacle (useful to check if the player can exit
+after he has collected all the collectibles)*/
 int	is_traversable_exit(int x, int y, t_mlx_data *data, int **is_visited)
 {
 	return ((x >= 0) && (x < data->map.width) && (y < data->map.height)
 		&& (data->map.grid[y][x] != '1') && (!is_visited[y][x]));
 }
 
+/*This function uses Depth-First-Search algorithm to mark all
+the boxes that can be visited by the player without counting the exit
+as an obstacle and then returns if the player can exit*/
 int	dfs_exit(int x, int y, t_mlx_data *data, int **is_visited)
 {
 	int	i;
@@ -60,6 +68,8 @@ int	dfs_exit(int x, int y, t_mlx_data *data, int **is_visited)
 	return (0);
 }
 
+/*This function tests if the player can exit the given
+map, even if he can collect all the collectibles*/
 int	is_exit_possible(t_mlx_data *data)
 {
 	int	start_x;
@@ -77,6 +87,8 @@ int	is_exit_possible(t_mlx_data *data)
 	return (is_exit_possible);
 }
 
+/*This function processes all the pathfinding logic and returns
+if the player can collect all the collectibles and exit*/
 int	is_path_possible(t_mlx_data *data)
 {
 	int	start_x;

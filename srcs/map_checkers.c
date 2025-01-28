@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 20:34:45 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/28 12:18:30 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 13:51:06 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ static int	check_wrong_input(char c, int i, int j, t_mlx_data *data)
 	return (1);
 }
 
+/*This function checks if there are duplicates exits or player
+starting positions in the given map*/
 static void	check_duplicates(t_mlx_data *data)
 {
 	int	i;

@@ -6,14 +6,14 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:23:53 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/27 19:46:29 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 14:19:00 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-#include <stdio.h>
-#include <string.h>
 
+/*This function initializes all the different images of
+the player in the data*/
 static void	init_player_images(t_mlx_data *data)
 {
 	data->images[3].img = mlx_xpm_file_to_image(data->mlx,
@@ -34,6 +34,8 @@ static void	init_player_images(t_mlx_data *data)
 			&data->images[6].height);
 }
 
+/*This function initializes all the different images 
+in the data*/
 static void	init_images(t_mlx_data *data)
 {
 	data->images[0].img = mlx_xpm_file_to_image(data->mlx,
@@ -55,9 +57,25 @@ static void	init_images(t_mlx_data *data)
 			&data->images[7].height);
 }
 
+/*Checks if all images have been initialized correctly*/
+static void	check_images_init(t_mlx_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < NUM_IMAGES)
+	{
+		if (!data->images[i].img)
+			print_error_free(data, "Error : An image has not been initialized\n");
+		i++;
+	}
+}
+
+/*This function initializes all the data needed for the
+logc of the game (map, images...)*/
 void	init_data(t_mlx_data *data, char *file_name)
 {
-	memset(data, 0, sizeof(t_mlx_data));
+	ft_bzero(data, sizeof(t_mlx_data));
 	data->map.grid = NULL;
 	data->mlx = mlx_init();
 	if (!data->mlx)
@@ -65,9 +83,10 @@ void	init_data(t_mlx_data *data, char *file_name)
 	parse_map(data, file_name);
 	data->collectibles = count_collectibles(data);
 	check_map(data);
+	init_images(data);
+	check_images_init(data);
 	data->win = mlx_new_window(data->mlx, 64 * data->map.width,
 			64 * data->map.height, "so_long");
 	if (!data->win)
 		print_error_free(data, "Error initializing window\n");
-	init_images(data);
 }

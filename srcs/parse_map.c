@@ -6,13 +6,14 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:55:35 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/28 12:19:15 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 13:57:00 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-#include <stdio.h>
 
+/*This function joins s1 and s2 string and frees s1 in the
+same time*/
 static char	*ft_strjoin_free(char *s1, char *s2)
 {
 	char	*res;
@@ -35,6 +36,8 @@ static char	*ft_strjoin_free(char *s1, char *s2)
 	return (res);
 }
 
+/*This function checks the right image to put at a certain position
+in the given map and puts it on the screen*/
 static void	put_right_image(char c, t_mlx_data *data, int x, int y)
 {
 	if (c == '1')
@@ -62,6 +65,8 @@ static void	put_right_image(char c, t_mlx_data *data, int x, int y)
 	}
 }
 
+/*This function frees all the data in the 2D string res
+(used to free what split allocated)*/
 void	ft_free(char **res)
 {
 	int	i;
@@ -76,6 +81,9 @@ void	ft_free(char **res)
 	free(res);
 }
 
+/*This function parses the string in the file that
+has been passed in parameter and puts all the elements
+in the grid in the map struct*/
 int	parse_map(t_mlx_data *data, char *file_name)
 {
 	int		fd;
@@ -103,6 +111,9 @@ int	parse_map(t_mlx_data *data, char *file_name)
 	return (free(line), free(res), 0);
 }
 
+/*This function get through all the elements of the map
+and puts each time the corresponding image to the screen at
+the right position*/
 int	render_map(t_map *map, t_mlx_data *data)
 {
 	int	i;
