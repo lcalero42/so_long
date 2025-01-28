@@ -29,7 +29,7 @@ MLX_DIR = minilibx-linux
 MLX_LIB = $(MLX_DIR)/libmlx_Linux.a
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
-all: $(MLX_LIB) $(NAME)
+all: $(MLX_LIB) $(LIBFT) $(NAME)
 
 $(NAME): $(OBJS)
 	@echo "$(BOLD)$(BLUE)Linking $(NAME)...$(RESET)"

@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:23:53 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/28 14:24:44 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 18:47:45 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ logc of the game (map, images...)*/
 void	init_data(t_mlx_data *data, char *file_name)
 {
 	ft_bzero(data, sizeof(t_mlx_data));
-	data->map.grid = NULL;
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		print_error_free(data, "Error initializing mlx\n");
