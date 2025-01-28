@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 15:55:27 by luis              #+#    #+#             */
-/*   Updated: 2025/01/28 13:19:55 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 14:32:19 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ int	main(int ac, char **av)
 {
 	t_mlx_data	data;
 
-	if (ac != 2)
-		return (print_error_free(&data, "Error : you must enter a file"), 1);
+	if (ac < 2)
+		return (ft_putstr_fd("Error\nYou must enter a file\n", 1), 1);
+	if (ac > 2)
+		return (ft_putstr_fd("Error\nToo much arguments\n", 1), 1);
 	init_data(&data, av[1]);
 	render_map(&data.map, &data);
 	mlx_key_hook(data.win, key_hook, &data);

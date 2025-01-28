@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:55:35 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/28 13:57:00 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 14:27:43 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	parse_map(t_mlx_data *data, char *file_name)
 
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
-		print_error_free(data, "Error : Wrong entry file\n");
+		print_error_free(data, "Error\nWrong entry file\n");
 	line = get_next_line(fd);
 	res = ft_strdup("");
 	while (line && *line != '\n')

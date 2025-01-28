@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:35:25 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/28 14:01:16 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 14:41:23 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 calls the right moving logic in consequence*/
 void	determin_movement(t_mlx_data *data, int keycode)
 {
-	if (keycode == W_KEY)
+	if (keycode == W_KEY || keycode == UP_ARROW)
 		move(0, -64, data);
-	if (keycode == S_KEY)
+	if (keycode == S_KEY || keycode == DOWN_ARROW)
 		move(0, 64, data);
-	if (keycode == A_KEY)
+	if (keycode == A_KEY || keycode == LEFT_ARROW)
 		move(-64, 0, data);
-	if (keycode == D_KEY)
+	if (keycode == D_KEY || keycode == RIGHT_ARROW)
 		move(64, 0, data);
 }
 

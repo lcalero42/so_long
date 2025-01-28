@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 16:07:11 by luis              #+#    #+#             */
-/*   Updated: 2025/01/28 13:41:37 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 14:40:25 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@
 # define A_KEY 97
 # define S_KEY 115
 # define D_KEY 100
+# define UP_ARROW 65362
+# define LEFT_ARROW 65361
+# define DOWN_ARROW 65364
+# define RIGHT_ARROW 65363
 # define ESC_KEY 65307
 
 //structs

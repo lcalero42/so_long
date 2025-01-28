@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:23:53 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/28 14:24:11 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 14:24:44 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static void	check_images_init(t_mlx_data *data)
 	{
 		if (!data->images[i].img)
 			print_error_free(data,
-				"Error : An image has not been initialized\n");
+				"Error\nAn image has not been initialized\n");
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 20:34:45 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/28 13:51:06 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 14:32:45 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ int	check_map_size(t_mlx_data *data)
 	while (data->map.grid[i])
 	{
 		if (i > 30)
-			print_error_free(data, "Error : height too high\n");
+			print_error_free(data, "Error\nHeight too high\n");
 		j = 0;
 		while (data->map.grid[i][j])
 			j++;
 		if (j > 60)
-			print_error_free(data, "Error : width too high\n");
+			print_error_free(data, "Error\nWidth too high\n");
 		i++;
 	}
 	return (1);
@@ -48,7 +48,7 @@ static int	check_map_shape(t_mlx_data *data)
 		while (data->map.grid[j])
 		{
 			if (ft_strlen(data->map.grid[i]) != ft_strlen(data->map.grid[j]))
-				print_error_free(data, "Error : map is not rectangular\n");
+				print_error_free(data, "Error\nMap is not rectangular\n");
 			j++;
 		}
 		i++;
@@ -100,7 +100,7 @@ static void	check_duplicates(t_mlx_data *data)
 	}
 	if ((cpt_exit != 1) || (cpt_start != 1))
 		print_error_free(data,
-			"Error : number of exit and start must be one\n");
+			"Error\nNumber of exit and start must be one\n");
 }
 
 /*This function processes all the map checking logic*/
@@ -119,12 +119,12 @@ int	check_map(t_mlx_data *data)
 		while (data->map.grid[i][j])
 		{
 			if (!check_wrong_input(data->map.grid[i][j], i, j, data))
-				print_error_free(data, "Error : Wrong input entered\n");
+				print_error_free(data, "Error\nWrong input entered\n");
 			j++;
 		}
 		i++;
 	}
 	if (!is_path_possible(data))
-		print_error_free(data, "Error : no path possible\n");
+		print_error_free(data, "Error\nNo path possible\n");
 	return (1);
 }
