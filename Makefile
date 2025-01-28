@@ -16,7 +16,7 @@ SRCS = srcs/main.c srcs/init_data.c srcs/parse_map.c libft/get_next_line.c \
        srcs/is_path_possible_utils.c srcs/rendering_utils.c libft/ft_bzero.c \
        libft/ft_strlen.c libft/ft_split.c libft/ft_itoa.c libft/ft_putnbr_fd.c \
        libft/ft_putstr_fd.c libft/ft_memcpy.c libft/ft_strdup.c libft/ft_strchr.c \
-       libft/ft_calloc.c libft/ft_putchar_fd.c
+       libft/ft_calloc.c libft/ft_putchar_fd.c libft/ft_strncmp.c
 HEADERS = includes/so_long.h libft/libft.h
 
 OBJS_DIR = objects/
@@ -29,7 +29,7 @@ MLX_DIR = minilibx-linux
 MLX_LIB = $(MLX_DIR)/libmlx_Linux.a
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
-all: $(LIBFT) $(MLX_LIB) $(NAME)
+all: $(MLX_LIB) $(NAME)
 
 $(NAME): $(OBJS)
 	@echo "$(BOLD)$(BLUE)Linking $(NAME)...$(RESET)"

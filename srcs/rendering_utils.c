@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 05:18:19 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/28 13:22:14 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 17:59:19 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,18 @@ void	player_win(t_mlx_data *data)
 	ft_putnbr_fd(data->player.nb_moves, 1);
 	ft_putstr_fd(" moves !\n", 1);
 	close_window(data);
+}
+
+void	skip_newlines(char **line, int fd)
+{
+	char	*tmp;
+
+	if (!line || !*line)
+		return;
+	while (*line && !ft_strncmp(*line, "\n", ft_strlen(*line)))
+	{
+		tmp = *line;
+		free(tmp);
+		*line = get_next_line(fd);
+	}
 }

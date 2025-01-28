@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:55:35 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/28 14:27:43 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 17:59:48 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	ft_free(char **res)
 	}
 	free(res);
 }
-
+#include <stdio.h>
 /*This function parses the string in the file that
 has been passed in parameter and puts all the elements
 in the grid in the map struct*/
@@ -96,10 +96,11 @@ int	parse_map(t_mlx_data *data, char *file_name)
 		print_error_free(data, "Error\nWrong entry file\n");
 	line = get_next_line(fd);
 	res = ft_strdup("");
-	while (line && *line != '\n')
+	while (line)
 	{
 		data->map.height++;
 		tmp = line;
+		skip_newlines(&tmp, fd);
 		if (data->map.width == 0)
 			data->map.width = ft_strlen(tmp) - 1;
 		res = ft_strjoin_free(res, tmp);
@@ -108,6 +109,8 @@ int	parse_map(t_mlx_data *data, char *file_name)
 	}
 	data->map.grid = ft_split(res, '\n');
 	close(fd);
+	for(int i = 0; data->map.grid[i]; i++)
+		printf("%s\n", data->map.grid[i]);
 	return (free(line), free(res), 0);
 }
 

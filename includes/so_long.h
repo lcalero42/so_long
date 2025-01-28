@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 16:07:11 by luis              #+#    #+#             */
-/*   Updated: 2025/01/28 14:40:25 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 17:59:59 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ int		parse_map(t_mlx_data *data, char *file_name);
 int		check_map(t_mlx_data *data);
 
 int		check_map_size(t_mlx_data *data);
+
+void	skip_newlines(char **line, int fd);
 
 //-----------path_checking
 int		is_path_possible(t_mlx_data *data);

@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 20:34:45 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/28 14:32:45 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/28 17:16:41 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,13 @@ static int	check_map_shape(t_mlx_data *data)
 or not*/
 static int	check_wrong_input(char c, int i, int j, t_mlx_data *data)
 {
-	if (i == 0 && c != '1')
+	if ((i == 0) && (c != '1'))
 		return (0);
-	if (j == 0 && c != '1')
+	if ((j == 0) && (c != '1'))
 		return (0);
-	if (i == data->map.height - 1 && c != '1')
+	if ((i == data->map.height - 1) && (c != '1'))
 		return (0);
-	if (j == data->map.width - 1 && c != '1')
+	if ((j == data->map.width - 1) && (c != '1'))
 		return (0);
 	if ((c != '1') && (c != '0') && (c != 'E') && (c != 'P') && (c != 'C'))
 		return (0);
