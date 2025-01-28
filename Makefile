@@ -33,19 +33,14 @@ all: $(LIBFT) $(MLX_LIB) $(NAME)
 
 $(NAME): $(OBJS)
 	@echo "$(BOLD)$(BLUE)Linking $(NAME)...$(RESET)"
-	@$(CC) $(FLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX_FLAGS)
+	@$(CC) $(FLAGS) -o $(NAME) $(LIBFT) $(OBJS) $(MLX_FLAGS)
 
 $(OBJS_DIR)%.o: srcs/%.c ${HEADERS}
 	@mkdir -p $(OBJS_DIR)
 	@echo "$(BOLD)$(GREEN)Compiling$(RESET) $<..."
 	@$(CC) $(FLAGS) -c $< -o $@
 
-$(OBJS_DIR)libft/%.o: $(LIBFT_DIR)/%.c
-	@mkdir -p $(OBJS_DIR)
-	@echo "$(BOLD)$(GREEN)Compiling$(RESET) $< from libft..."
-	@$(CC) $(FLAGS) -c $< -o $@
-
-$(LIBFT):
+$(LIBFT): ${HEADERS}
 	@echo "$(BOLD)$(CYAN)Building libft...$(RESET)"
 	@$(MAKE) -C $(LIBFT_DIR) all >/dev/null 2>&1
 
