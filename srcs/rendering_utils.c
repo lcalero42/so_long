@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 05:18:19 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/29 18:03:26 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/29 18:23:42 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ void	update_print_moves(t_mlx_data *data)
 	s = NULL;
 	data->player.nb_moves++;
 	s = ft_itoa(data->player.nb_moves);
+	ft_putstr_fd("\033[0;34mMove count : \033[0m", 1);
+	ft_putstr_fd("\033[0;35m", 1);
 	ft_putstr_fd(s, 1);
+	ft_putstr_fd("\033[0m", 1);
 	ft_putchar_fd('\n', 1);
 	free(s);
 }
@@ -30,9 +33,12 @@ void	update_print_moves(t_mlx_data *data)
 of moves the player made to win and closes the window*/
 void	player_win(t_mlx_data *data)
 {
-	ft_putstr_fd("Well done ! You won with ", 1);
+	ft_putstr_fd("\e[0;32mWell done ! You won with \033[0m", 1);
+	ft_putstr_fd("\e[0;35m", 1);
 	ft_putnbr_fd(data->player.nb_moves, 1);
+	ft_putstr_fd("\e[0;32m", 1);
 	ft_putstr_fd(" moves !\n", 1);
+	ft_putstr_fd("\033[0m", 1);
 	close_window(data);
 }
 
