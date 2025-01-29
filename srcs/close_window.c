@@ -6,13 +6,14 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 19:20:25 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/22 20:32:15 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/29 22:54:51 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-//closes the window and frees all the data
+/*closes the window and frees all the data
+that needs to be freed*/
 int	close_window(t_mlx_data *data)
 {
 	int	i;

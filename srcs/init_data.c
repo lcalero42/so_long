@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:23:53 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/29 18:01:00 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/29 22:54:14 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static void	check_images_init(t_mlx_data *data)
 }
 
 /*This function initializes all the data needed for the
-logc of the game (map, images...)*/
+logic of the game (map, images...)*/
 void	init_data(t_mlx_data *data, char *file_name)
 {
 	int	window_x;
