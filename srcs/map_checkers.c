@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 20:34:45 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/28 19:42:55 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/29 11:11:03 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,8 @@ int	check_map(t_mlx_data *data)
 	int	i;
 	int	j;
 
+	if (!data->map.grid[0])
+		print_error_free(data, "Error\nEmpty map\n");
 	i = 0;
 	while (data->map.grid[i])
 	{
