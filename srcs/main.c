@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 15:55:27 by luis              #+#    #+#             */
-/*   Updated: 2025/01/28 14:32:19 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/29 17:38:51 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	main(int ac, char **av)
 		return (ft_putstr_fd("Error\nYou must enter a file\n", 1), 1);
 	if (ac > 2)
 		return (ft_putstr_fd("Error\nToo much arguments\n", 1), 1);
+	if (!check_map_extension(av[1]))
+		return (ft_putstr_fd("Error\nWrong file extension\n", 1), 1);
 	init_data(&data, av[1]);
 	render_map(&data.map, &data);
 	mlx_key_hook(data.win, key_hook, &data);

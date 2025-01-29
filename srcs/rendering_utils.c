@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 05:18:19 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/28 19:12:37 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/29 17:39:16 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	update_print_moves(t_mlx_data *data)
 {
 	char	*s;
 
+	s = NULL;
 	data->player.nb_moves++;
 	s = ft_itoa(data->player.nb_moves);
 	ft_putstr_fd(s, 1);
@@ -50,4 +51,19 @@ void	skip_newlines(char **line, int fd)
 		free(tmp);
 		*line = get_next_line(fd);
 	}
+}
+
+int		check_map_extension(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == '.')
+			if (ft_strncmp(s + i, ".ber", 4))
+				return (0);
+		i++;
+	}
+	return (1);
 }

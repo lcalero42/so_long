@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:55:35 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/29 11:10:46 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/29 17:24:50 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,22 @@ static void	put_right_image(char c, t_mlx_data *data, int x, int y)
 	if (c == '1')
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->images[1].img, x, y);
-	else if (c == 'C')
+	if (c == 'C')
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->images[2].img, x, y);
-	else if (c == 'P')
+	if (c == 'P')
 	{
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->images[3].img, x, y);
 		data->player.pos_x = x;
 		data->player.pos_y = y;
 	}
-	else if (c == 'E')
+	if (c == 'E')
 	{
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->images[7].img, x, y);
 	}
-	else if (c == '0')
+	if (c == '0')
 	{
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->images[0].img, x, y);

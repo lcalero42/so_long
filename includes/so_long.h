@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 16:07:11 by luis              #+#    #+#             */
-/*   Updated: 2025/01/29 11:34:57 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/29 17:36:42 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ int		check_map(t_mlx_data *data);
 int		check_map_size(t_mlx_data *data);
 
 void	skip_newlines(char **line, int fd);
+
+int		check_map_extension(char *s);
 
 //-----------path_checking
 int		is_path_possible(t_mlx_data *data);

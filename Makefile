@@ -34,32 +34,32 @@ all: $(MLX_LIB) $(LIBFT) $(NAME)
 
 $(NAME): $(OBJS)
 	@echo "$(BOLD)$(BLUE)Linking $(NAME)...$(RESET)"
-	@$(CC) $(FLAGS) -o $(NAME) $(LIBFT) $(OBJS) $(MLX_FLAGS)
+	$(CC) $(FLAGS) -o $(NAME) $(LIBFT) $(OBJS) $(MLX_FLAGS)
 
 $(OBJS_DIR)%.o: srcs/%.c ${HEADERS}
-	@mkdir -p $(OBJS_DIR)
+	mkdir -p $(OBJS_DIR)
 	@echo "$(BOLD)$(GREEN)Compiling$(RESET) $<..."
-	@$(CC) $(FLAGS) -c $< -o $@
+	$(CC) $(FLAGS) -c $< -o $@
 
 $(LIBFT): ${LIBFT_HEADER}
 	@echo "$(BOLD)$(CYAN)Building libft...$(RESET)"
-	@$(MAKE) -C $(LIBFT_DIR) all >/dev/null 2>&1
+	$(MAKE) -C $(LIBFT_DIR) all
 
 $(MLX_LIB):
 	@echo "$(BOLD)$(CYAN)Building minilibx-linux...$(RESET)"
-	@$(MAKE) -C $(MLX_DIR) >/dev/null 2>&1
+	$(MAKE) -C $(MLX_DIR)
 
 clean:
 	@echo "$(BOLD)$(RED)Cleaning object files...$(RESET)"
-	@rm -rf $(OBJS_DIR)
-	@$(MAKE) -C $(LIBFT_DIR) clean >/dev/null 2>&1
-	@$(MAKE) -C $(MLX_DIR) clean >/dev/null 2>&1
+	rm -rf $(OBJS_DIR)
+	$(MAKE) -C $(LIBFT_DIR) clean
+	$(MAKE) -C $(MLX_DIR) clean
 
 fclean: clean
 	@echo "Cleaning binaries..."
-	@rm -f $(NAME)
-	@rm -f $(LIBFT)
-	@$(MAKE) -C $(LIBFT_DIR) fclean >/dev/null 2>&1
+	rm -f $(NAME)
+	rm -f $(LIBFT)
+	$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
 

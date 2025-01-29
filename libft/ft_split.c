@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:05:53 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/27 17:04:38 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/29 16:32:26 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ static char	*ft_strdup_size(const char *s, unsigned int start, char c, int j)
 		i++;
 		j++;
 	}
-	res[i] = '\0';
 	return (res);
 }
 
