@@ -18,6 +18,7 @@ SRCS = srcs/main.c srcs/init_data.c srcs/parse_map.c libft/get_next_line.c \
        libft/ft_putstr_fd.c libft/ft_memcpy.c libft/ft_strdup.c libft/ft_strchr.c \
        libft/ft_calloc.c libft/ft_putchar_fd.c libft/ft_strncmp.c
 HEADERS = includes/so_long.h libft/libft.h
+LIBFT_HEADER = libft/libft.h
 
 OBJS_DIR = objects/
 OBJS = $(SRCS:srcs/%.c=$(OBJS_DIR)%.o)
@@ -40,7 +41,7 @@ $(OBJS_DIR)%.o: srcs/%.c ${HEADERS}
 	@echo "$(BOLD)$(GREEN)Compiling$(RESET) $<..."
 	@$(CC) $(FLAGS) -c $< -o $@
 
-$(LIBFT): ${HEADERS}
+$(LIBFT): ${LIBFT_HEADER}
 	@echo "$(BOLD)$(CYAN)Building libft...$(RESET)"
 	@$(MAKE) -C $(LIBFT_DIR) all >/dev/null 2>&1
 
