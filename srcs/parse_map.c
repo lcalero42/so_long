@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:55:35 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/29 17:24:50 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/29 23:14:35 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,29 +40,31 @@ static char	*ft_strjoin_free(char *s1, char *s2)
 in the given map and puts it on the screen*/
 static void	put_right_image(char c, t_mlx_data *data, int x, int y)
 {
-	if (c == '1')
+	if (c == '1' && data->images[1].img)
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->images[1].img, x, y);
-	if (c == 'C')
+	else if (c == 'C' && data->images[2].img)
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->images[2].img, x, y);
-	if (c == 'P')
+	else if (c == 'P' && data->images[3].img)
 	{
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->images[3].img, x, y);
 		data->player.pos_x = x;
 		data->player.pos_y = y;
 	}
-	if (c == 'E')
+	else if (c == 'E' && data->images[7].img)
 	{
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->images[7].img, x, y);
 	}
-	if (c == '0')
+	else if (c == '0' && data->images[0].img)
 	{
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->images[0].img, x, y);
 	}
+	else
+		print_error_free(data, "Error\n Failed to load image\n");
 }
 
 /*This function frees all the data in the 2D string res
