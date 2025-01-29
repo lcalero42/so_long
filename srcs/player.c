@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:35:25 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/30 00:26:26 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/30 00:31:10 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,21 @@ static int	check_move(int x, int y, t_mlx_data *data)
 		|| (data->map.grid[data->player.grid_y][data->player.grid_x + 1] == 'E'
 		&& !can_exit(data))))
 		return (0);
-	else if (x < 0
+	if (x < 0
 		&& (data->map.grid[data->player.grid_y][data->player.grid_x - 1] == '1'
 		|| (data->map.grid[data->player.grid_y][data->player.grid_x - 1] == 'E'
 		&& !can_exit(data))))
 		return (0);
-	else if (y > 0
+	if (y > 0
 		&& (data->map.grid[data->player.grid_y + 1][data->player.grid_x] == '1'
 		|| (data->map.grid[data->player.grid_y + 1][data->player.grid_x] == 'E'
 		&& !can_exit(data))))
 		return (0);
-	else if (y < 0
+	if (y < 0
 		&& (data->map.grid[data->player.grid_y - 1][data->player.grid_x] == '1'
 		|| (data->map.grid[data->player.grid_y - 1][data->player.grid_x] == 'E'
 		&& !can_exit(data))))
 		return (0);
-	else
-		print_error_free(data, "Error\n Failed to load image\n");
 	return (1);
 }
 
@@ -62,15 +60,17 @@ static void	determin_player_image(int x, int y, t_mlx_data *data)
 	if (x > 0 && data->images[5].img)
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->images[5].img, data->player.pos_x, data->player.pos_y);
-	if (x < 0 && data->images[6].img)
+	else if (x < 0 && data->images[6].img)
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->images[6].img, data->player.pos_x, data->player.pos_y);
-	if (y > 0 && data->images[3].img)
+	else if (y > 0 && data->images[3].img)
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->images[3].img, data->player.pos_x, data->player.pos_y);
-	if (y < 0 && data->images[4].img)
+	else if (y < 0 && data->images[4].img)
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->images[4].img, data->player.pos_x, data->player.pos_y);
+	else
+		print_error_free(data, "Error\nFailed to load image\n");
 }
 
 /*This function applies all the moving logic and updates the
