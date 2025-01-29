@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 05:18:19 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/29 17:39:16 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/29 18:03:26 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	skip_newlines(char **line, int fd)
 	}
 }
 
+/*This function checks the extension of the string
+we enter and returns 1 if it is a .ber and 0 if it is not*/
 int		check_map_extension(char *s)
 {
 	int	i;

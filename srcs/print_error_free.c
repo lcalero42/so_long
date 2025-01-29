@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 21:33:51 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/28 14:02:41 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/29 18:05:12 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ void	print_error_free(t_mlx_data *data, char *s)
 	free(data->mlx);
 	if (data->map.grid)
 		ft_free(data->map.grid);
-	ft_putstr_fd(s, 1);
+	ft_putstr_fd(s, 2);
 	exit(0);
 }
