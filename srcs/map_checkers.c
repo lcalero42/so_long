@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 20:34:45 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/29 11:11:03 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/30 17:58:18 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,16 @@ int	check_map_size(t_mlx_data *data)
 	int	i;
 	int	j;
 
+	ft_putstr_fd("Checking map size...\n", 1);
 	i = 0;
 	while (data->map.grid[i])
 	{
-		if (i > 30)
+		if (i > MAX_HEIGHT)
 			print_error_free(data, "Error\nHeight too high\n");
 		j = 0;
 		while (data->map.grid[i][j])
 			j++;
-		if (j > 60)
+		if (j > MAX_WIDTH)
 			print_error_free(data, "Error\nWidth too high\n");
 		i++;
 	}
@@ -41,6 +42,7 @@ static int	check_map_shape(t_mlx_data *data)
 	int	i;
 	int	j;
 
+	ft_putstr_fd("Checking map shape...\n", 1);
 	i = 0;
 	while (data->map.grid[i])
 	{
@@ -82,6 +84,7 @@ static void	check_duplicates(t_mlx_data *data)
 	int	cpt_exit;
 	int	cpt_start;
 
+	ft_putstr_fd("Checking number of exits and starts...\n", 1);
 	i = 0;
 	cpt_exit = 0;
 	cpt_start = 0;

@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:23:53 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/30 14:37:12 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/30 17:54:58 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	init_images(t_mlx_data *data)
 			&data->images[0].width,
 			&data->images[0].height);
 	data->images[1].img = mlx_xpm_file_to_image(data->mlx,
-			"ressources/bush.xpm",
+			"ressources/tree.xpm",
 			&data->images[1].width,
 			&data->images[1].height);
 	data->images[2].img = mlx_xpm_file_to_image(data->mlx,
@@ -62,6 +62,7 @@ static void	check_images_init(t_mlx_data *data)
 {
 	int	i;
 
+	ft_putstr_fd("Checking image initialization...\n", 1);
 	i = 0;
 	while (i < NUM_IMAGES)
 	{
@@ -93,4 +94,5 @@ void	init_data(t_mlx_data *data, char *file_name)
 			data->window_y, "So_long");
 	if (!data->win)
 		print_error_free(data, "Error initializing window\n");
+	ft_putstr_fd("\e[0;32mGame Is Lauching...\n\e[0m", 1);
 }
