@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:23:53 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/29 22:54:14 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/30 13:37:34 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,8 @@ static void	check_images_init(t_mlx_data *data)
 logic of the game (map, images...)*/
 void	init_data(t_mlx_data *data, char *file_name)
 {
-	int	window_x;
-	int	window_y;
-
 	ft_bzero(data, sizeof(t_mlx_data));
+	data->keycode = W_KEY;
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		print_error_free(data, "Error initializing mlx\n");
@@ -88,10 +86,11 @@ void	init_data(t_mlx_data *data, char *file_name)
 	check_map(data);
 	init_images(data);
 	check_images_init(data);
-	window_x = 64 * data->map.width;
-	window_y = 64 * data->map.height;
-	data->win = mlx_new_window(data->mlx, window_x,
-			window_y, "Exit The Garden");
+	data->player.current_image = data->images[3];
+	data->window_x = 64 * data->map.width;
+	data->window_y = 64 * data->map.height;
+	data->win = mlx_new_window(data->mlx, data->window_x,
+			data->window_y, "Exit The Garden");
 	if (!data->win)
 		print_error_free(data, "Error initializing window\n");
 }

@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 16:07:11 by luis              #+#    #+#             */
-/*   Updated: 2025/01/29 19:38:49 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/30 13:28:21 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,13 @@ typedef struct s_map
 
 typedef struct s_player
 {
-	int	pos_x;
-	int	pos_y;
-	int	grid_x;
-	int	grid_y;
-	int	collectibles;
-	int	nb_moves;
+	int		pos_x;
+	int		pos_y;
+	int		grid_x;
+	int		grid_y;
+	int		collectibles;
+	int		nb_moves;
+	t_image	current_image;
 }	t_player;
 
 typedef struct s_mlx_data
@@ -64,6 +65,9 @@ typedef struct s_mlx_data
 	t_map		map;
 	t_player	player;
 	int			collectibles;
+	int			window_x;
+	int			window_y;
+	int			keycode;
 }	t_mlx_data;
 
 //data  initializing
@@ -100,7 +104,7 @@ int		is_traversable(int x, int y, t_mlx_data *data, int **is_visited);
 int		count_possible_collec(t_mlx_data *data, int **is_visited);
 
 //player functions
-void	move(int x, int y, t_mlx_data *data);
+void	move(int x, int y, t_mlx_data *data, int keycode);
 
 void	determin_movement(t_mlx_data *data, int keycode);
 
@@ -118,5 +122,12 @@ void	print_error_free(t_mlx_data *data, char *s);
 int		key_hook(int keycode, t_mlx_data *data);
 
 void	ft_free(char **res);
+
+//rendering
+int		loop(t_mlx_data *data);
+
+void	save_player_image(int keycode, t_mlx_data *data);
+
+t_image	get_player_texture(int keycode, t_mlx_data *data);
 
 #endif

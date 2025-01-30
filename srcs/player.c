@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:35:25 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/30 00:31:10 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/30 13:32:21 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,25 @@ calls the right moving logic in consequence*/
 void	determin_movement(t_mlx_data *data, int keycode)
 {
 	if (keycode == W_KEY || keycode == UP_ARROW)
-		move(0, -64, data);
+	{
+		move(0, -64, data, keycode);
+		data->map.grid[data->player.grid_y][data->player.grid_x] = 'P';
+	}
 	if (keycode == S_KEY || keycode == DOWN_ARROW)
-		move(0, 64, data);
+	{
+		move(0, 64, data, keycode);
+		data->map.grid[data->player.grid_y][data->player.grid_x] = 'P';
+	}
 	if (keycode == A_KEY || keycode == LEFT_ARROW)
-		move(-64, 0, data);
+	{
+		move(-64, 0, data, keycode);
+		data->map.grid[data->player.grid_y][data->player.grid_x] = 'P';
+	}
 	if (keycode == D_KEY || keycode == RIGHT_ARROW)
-		move(64, 0, data);
+	{
+		move(64, 0, data, keycode);
+		data->map.grid[data->player.grid_y][data->player.grid_x] = 'P';
+	}
 }
 
 /*This function checks if the player can move to the position where he
@@ -55,7 +67,7 @@ static int	check_move(int x, int y, t_mlx_data *data)
 
 /*This functions determins which image must be rendered to the screen
 considering the direction the player is going*/
-static void	determin_player_image(int x, int y, t_mlx_data *data)
+/*static void	determin_player_image(int x, int y, t_mlx_data *data)
 {
 	if (x > 0 && data->images[5].img)
 		mlx_put_image_to_window(data->mlx, data->win,
@@ -71,20 +83,20 @@ static void	determin_player_image(int x, int y, t_mlx_data *data)
 			data->images[4].img, data->player.pos_x, data->player.pos_y);
 	else
 		print_error_free(data, "Error\nFailed to load image\n");
-}
+}*/
 
 /*This function applies all the moving logic and updates the
 coordinates of the player in the screen and in the grid*/
-void	move(int x, int y, t_mlx_data *data)
+void	move(int x, int y, t_mlx_data *data, int keycode)
 {
-	determin_player_image(x, y, data);
+	save_player_image(keycode, data);
 	if (!check_move(x, y, data))
 		return ;
+	data->player.nb_moves++;
 	update_print_moves(data);
-	mlx_put_image_to_window(data->mlx, data->win,
-		data->images[0].img, data->player.pos_x, data->player.pos_y);
 	data->player.pos_x += x;
 	data->player.pos_y += y;
+	data->map.grid[data->player.grid_y][data->player.grid_x] = '0';
 	if (x > 0)
 		data->player.grid_x++;
 	if (x < 0)
@@ -98,7 +110,6 @@ void	move(int x, int y, t_mlx_data *data)
 		data->player.collectibles++;
 		data->map.grid[data->player.grid_y][data->player.grid_x] = '0';
 	}
-	determin_player_image(x, y, data);
 	if (data->map.grid[data->player.grid_y][data->player.grid_x] == 'E')
 		player_win(data);
 }

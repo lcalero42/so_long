@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:55:35 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/29 23:14:35 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/30 13:31:20 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	put_right_image(char c, t_mlx_data *data, int x, int y)
 	else if (c == 'P' && data->images[3].img)
 	{
 		mlx_put_image_to_window(data->mlx, data->win,
-			data->images[3].img, x, y);
+			get_player_texture(data->keycode, data).img, x, y);
 		data->player.pos_x = x;
 		data->player.pos_y = y;
 	}

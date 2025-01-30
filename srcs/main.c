@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 15:55:27 by luis              #+#    #+#             */
-/*   Updated: 2025/01/29 23:04:32 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/30 12:08:59 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int ac, char **av)
 		return (ft_putstr_fd("Error\nWrong file extension\n", 2), 1);
 	init_data(&data, av[1]);
 	render_map(&data.map, &data);
+	mlx_loop_hook(data.mlx, loop, &data);
 	mlx_hook(data.win, 2, 1L<<0, key_hook, &data);
 	mlx_hook(data.win, 17, 0, close_window, &data);
 	mlx_loop(data.mlx);

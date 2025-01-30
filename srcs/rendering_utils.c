@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 05:18:19 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/29 18:23:42 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/30 12:55:08 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,14 @@ void	update_print_moves(t_mlx_data *data)
 	char	*s;
 
 	s = NULL;
-	data->player.nb_moves++;
 	s = ft_itoa(data->player.nb_moves);
-	ft_putstr_fd("\033[0;34mMove count : \033[0m", 1);
-	ft_putstr_fd("\033[0;35m", 1);
-	ft_putstr_fd(s, 1);
-	ft_putstr_fd("\033[0m", 1);
-	ft_putchar_fd('\n', 1);
+	if (!s)
+	{
+		free(s);
+		print_error_free(data, "Allocation Error\n");	
+	}
+	mlx_string_put(data->mlx, data->win, data->window_x - 100, 27, 0xFFFFFF, "Moves :");
+	mlx_string_put(data->mlx, data->win, data->window_x - 25, 28, 0xFFFFFF, s);
 	free(s);
 }
 
@@ -39,6 +40,7 @@ void	player_win(t_mlx_data *data)
 	ft_putstr_fd("\e[0;32m", 1);
 	ft_putstr_fd(" moves !\n", 1);
 	ft_putstr_fd("\033[0m", 1);
+	usleep(2000000);
 	close_window(data);
 }
 
