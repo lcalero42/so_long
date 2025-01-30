@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 05:18:19 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/30 12:55:08 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/30 13:50:49 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@ void	update_print_moves(t_mlx_data *data)
 	if (!s)
 	{
 		free(s);
-		print_error_free(data, "Allocation Error\n");	
+		print_error_free(data, "Allocation Error\n");
 	}
-	mlx_string_put(data->mlx, data->win, data->window_x - 100, 27, 0xFFFFFF, "Moves :");
-	mlx_string_put(data->mlx, data->win, data->window_x - 25, 28, 0xFFFFFF, s);
+	mlx_string_put(data->mlx, data->win,
+		data->window_x - 100, 27, 0xFFFFFF, "Moves :");
+	mlx_string_put(data->mlx, data->win,
+		data->window_x - 25, 28, 0xFFFFFF, s);
 	free(s);
 }
 
@@ -40,7 +42,6 @@ void	player_win(t_mlx_data *data)
 	ft_putstr_fd("\e[0;32m", 1);
 	ft_putstr_fd(" moves !\n", 1);
 	ft_putstr_fd("\033[0m", 1);
-	usleep(2000000);
 	close_window(data);
 }
 
@@ -63,7 +64,7 @@ void	skip_newlines(char **line, int fd)
 
 /*This function checks the extension of the string
 we enter and returns 1 if it is a .ber and 0 if it is not*/
-int		check_map_extension(char *s)
+int	check_map_extension(char *s)
 {
 	int	i;
 

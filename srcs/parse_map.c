@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:55:35 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/30 13:31:20 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/30 13:57:05 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,18 +128,18 @@ int	render_map(t_map *map, t_mlx_data *data)
 	x = 0;
 	y = 0;
 	i = 0;
-	while (map->grid[i] && i < 30)
+	while (map->grid[i] && (i < MAX_HEIGHT))
 	{
 		j = 0;
-		while (map->grid[i][j] && j < 60)
+		while (map->grid[i][j] && (j < MAX_WIDTH))
 		{
 			put_right_image(map->grid[i][j], data, x, y);
 			check_player_starting(data, map->grid[i][j], i, j);
 			j++;
-			x += 64;
+			x += IMG_SIZE;
 		}
 		x = 0;
-		y += 64;
+		y += IMG_SIZE;
 		i++;
 	}
 	return (0);

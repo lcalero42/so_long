@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:23:53 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/30 13:37:34 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/30 14:37:12 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	init_images(t_mlx_data *data)
 			&data->images[1].width,
 			&data->images[1].height);
 	data->images[2].img = mlx_xpm_file_to_image(data->mlx,
-			"ressources/bottle.xpm",
+			"ressources/ball.xpm",
 			&data->images[2].width,
 			&data->images[2].height);
 	init_player_images(data);
@@ -87,10 +87,10 @@ void	init_data(t_mlx_data *data, char *file_name)
 	init_images(data);
 	check_images_init(data);
 	data->player.current_image = data->images[3];
-	data->window_x = 64 * data->map.width;
-	data->window_y = 64 * data->map.height;
+	data->window_x = IMG_SIZE * data->map.width;
+	data->window_y = IMG_SIZE * data->map.height;
 	data->win = mlx_new_window(data->mlx, data->window_x,
-			data->window_y, "Exit The Garden");
+			data->window_y, "So_long");
 	if (!data->win)
 		print_error_free(data, "Error initializing window\n");
 }

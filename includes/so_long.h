@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 16:07:11 by luis              #+#    #+#             */
-/*   Updated: 2025/01/30 13:28:21 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/30 13:56:52 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 # include <fcntl.h>
 
 # define NUM_IMAGES 8
+# define IMG_SIZE 64
+
+# define MAX_WIDTH 60
+# define MAX_HEIGHT 30
 
 # define BUFFER_SIZE 1
 
