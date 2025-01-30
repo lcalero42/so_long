@@ -6,82 +6,13 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:55:35 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/30 13:57:05 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/30 18:38:26 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-/*This function joins s1 and s2 string and frees s1 in the
-same time*/
-static char	*ft_strjoin_free(char *s1, char *s2)
-{
-	char	*res;
-	size_t	len_s1;
-	size_t	j;
-
-	j = 0;
-	len_s1 = ft_strlen(s1);
-	while (s2[j] != '\n' && s2[j])
-		j++;
-	if (s2[j] == '\n')
-		j++;
-	res = malloc((len_s1 + j + 1) * sizeof(char));
-	if (res == NULL)
-		return (free(s1), NULL);
-	ft_memcpy(res, s1, len_s1);
-	ft_memcpy(res + len_s1, s2, j);
-	res[len_s1 + j] = '\0';
-	free(s1);
-	return (res);
-}
-
-/*This function checks the right image to put at a certain position
-in the given map and puts it on the screen*/
-static void	put_right_image(char c, t_mlx_data *data, int x, int y)
-{
-	if (c == '1' && data->images[1].img)
-		mlx_put_image_to_window(data->mlx, data->win,
-			data->images[1].img, x, y);
-	else if (c == 'C' && data->images[2].img)
-		mlx_put_image_to_window(data->mlx, data->win,
-			data->images[2].img, x, y);
-	else if (c == 'P' && data->images[3].img)
-	{
-		mlx_put_image_to_window(data->mlx, data->win,
-			get_player_texture(data->keycode, data).img, x, y);
-		data->player.pos_x = x;
-		data->player.pos_y = y;
-	}
-	else if (c == 'E' && data->images[7].img)
-	{
-		mlx_put_image_to_window(data->mlx, data->win,
-			data->images[7].img, x, y);
-	}
-	else if (c == '0' && data->images[0].img)
-	{
-		mlx_put_image_to_window(data->mlx, data->win,
-			data->images[0].img, x, y);
-	}
-	else
-		print_error_free(data, "Error\n Failed to load image\n");
-}
-
-/*This function frees all the data in the 2D string res
-(used to free what split allocated)*/
-void	ft_free(char **res)
-{
-	int	i;
-
-	i = 0;
-	while (res[i])
-	{
-		if (res[i])
-			free(res[i]);
-		i++;
-	}
-	free(res);
-}
+static char	*ft_strjoin_free(char *s1, char *s2);
 
 /*This function parses the string in the file that
 has been passed in parameter and puts all the elements
@@ -115,32 +46,42 @@ int	parse_map(t_mlx_data *data, char *file_name)
 	return (free(line), free(res), 0);
 }
 
-/*This function get through all the elements of the map
-and puts each time the corresponding image to the screen at
-the right position*/
-int	render_map(t_map *map, t_mlx_data *data)
+/*This function joins s1 and s2 string and frees s1 in the
+same time*/
+static char	*ft_strjoin_free(char *s1, char *s2)
+{
+	char	*res;
+	size_t	len_s1;
+	size_t	j;
+
+	j = 0;
+	len_s1 = ft_strlen(s1);
+	while (s2[j] != '\n' && s2[j])
+		j++;
+	if (s2[j] == '\n')
+		j++;
+	res = malloc((len_s1 + j + 1) * sizeof(char));
+	if (res == NULL)
+		return (free(s1), NULL);
+	ft_memcpy(res, s1, len_s1);
+	ft_memcpy(res + len_s1, s2, j);
+	res[len_s1 + j] = '\0';
+	free(s1);
+	return (res);
+}
+
+/*This function frees all the data in the 2D string res
+(used to free what split allocated)*/
+void	ft_free(char **res)
 {
 	int	i;
-	int	j;
-	int	x;
-	int	y;
 
-	x = 0;
-	y = 0;
 	i = 0;
-	while (map->grid[i] && (i < MAX_HEIGHT))
+	while (res[i])
 	{
-		j = 0;
-		while (map->grid[i][j] && (j < MAX_WIDTH))
-		{
-			put_right_image(map->grid[i][j], data, x, y);
-			check_player_starting(data, map->grid[i][j], i, j);
-			j++;
-			x += IMG_SIZE;
-		}
-		x = 0;
-		y += IMG_SIZE;
+		if (res[i])
+			free(res[i]);
 		i++;
 	}
-	return (0);
+	free(res);
 }

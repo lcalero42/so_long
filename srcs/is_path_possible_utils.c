@@ -6,19 +6,13 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:52:56 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/28 14:03:26 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/30 18:31:23 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-/*This functions checks if a position is traversable or not*/
-int	is_traversable(int x, int y, t_mlx_data *data, int **is_visited)
-{
-	return ((x >= 0) && (x < data->map.width) && (y < data->map.height)
-		&& (data->map.grid[y][x] != '1') && (data->map.grid[y][x] != 'E')
-		&& (!is_visited[y][x]));
-}
+int	is_traversable(int x, int y, t_mlx_data *data, int **is_visited);
 
 /*This function uses Depth-First-Search algorithm to mark all
 the boxes that can be visited by the player*/
@@ -33,6 +27,14 @@ void	dfs(int x, int y, t_mlx_data *data, int **is_visited)
 		dfs(x - 1, y, data, is_visited);
 	if (is_traversable(x + 1, y, data, is_visited))
 		dfs(x + 1, y, data, is_visited);
+}
+
+/*This functions checks if a position is traversable or not*/
+int	is_traversable(int x, int y, t_mlx_data *data, int **is_visited)
+{
+	return ((x >= 0) && (x < data->map.width) && (y < data->map.height)
+		&& (data->map.grid[y][x] != '1') && (data->map.grid[y][x] != 'E')
+		&& (!is_visited[y][x]));
 }
 
 /*This function finds the player starting position and initializes

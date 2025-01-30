@@ -6,15 +6,48 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 20:34:45 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/30 17:58:18 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/30 18:35:43 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+static int	check_map_size(t_mlx_data *data);
+static int	check_map_shape(t_mlx_data *data);
+static int	check_wrong_input(char c, int i, int j, t_mlx_data *data);
+static void	check_duplicates(t_mlx_data *data);
+
+/*This function processes all the map checking logic*/
+int	check_map(t_mlx_data *data)
+{
+	int	i;
+	int	j;
+
+	if (!data->map.grid[0])
+		print_error_free(data, "Error\nEmpty map\n");
+	i = 0;
+	while (data->map.grid[i])
+	{
+		j = 0;
+		while (data->map.grid[i][j])
+		{
+			if (!check_wrong_input(data->map.grid[i][j], i, j, data))
+				print_error_free(data, "Error\nWrong input entered\n");
+			j++;
+		}
+		i++;
+	}
+	check_map_size(data);
+	check_map_shape(data);
+	check_duplicates(data);
+	if (!is_path_possible(data))
+		print_error_free(data, "Error\nNo path possible\n");
+	return (1);
+}
+
 /*This function checks that the height or the 
 width of the map is not too big*/
-int	check_map_size(t_mlx_data *data)
+static int	check_map_size(t_mlx_data *data)
 {
 	int	i;
 	int	j;
@@ -104,32 +137,4 @@ static void	check_duplicates(t_mlx_data *data)
 	if ((cpt_exit != 1) || (cpt_start != 1))
 		print_error_free(data,
 			"Error\nNumber of exit and start must be one\n");
-}
-
-/*This function processes all the map checking logic*/
-int	check_map(t_mlx_data *data)
-{
-	int	i;
-	int	j;
-
-	if (!data->map.grid[0])
-		print_error_free(data, "Error\nEmpty map\n");
-	i = 0;
-	while (data->map.grid[i])
-	{
-		j = 0;
-		while (data->map.grid[i][j])
-		{
-			if (!check_wrong_input(data->map.grid[i][j], i, j, data))
-				print_error_free(data, "Error\nWrong input entered\n");
-			j++;
-		}
-		i++;
-	}
-	check_map_size(data);
-	check_map_shape(data);
-	check_duplicates(data);
-	if (!is_path_possible(data))
-		print_error_free(data, "Error\nNo path possible\n");
-	return (1);
 }

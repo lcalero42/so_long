@@ -6,11 +6,39 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:23:53 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/30 17:54:58 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/30 18:30:11 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+static void	init_player_images(t_mlx_data *data);
+static void	init_images(t_mlx_data *data);
+static void	check_images_init(t_mlx_data *data);
+
+/*This function initializes all the data needed for the
+logic of the game (map, images...)*/
+void	init_data(t_mlx_data *data, char *file_name)
+{
+	ft_bzero(data, sizeof(t_mlx_data));
+	data->keycode = W_KEY;
+	data->mlx = mlx_init();
+	if (!data->mlx)
+		print_error_free(data, "Error initializing mlx\n");
+	parse_map(data, file_name);
+	data->collectibles = count_collectibles(data);
+	check_map(data);
+	init_images(data);
+	check_images_init(data);
+	data->player.current_image = data->images[3];
+	data->window_x = IMG_SIZE * data->map.width;
+	data->window_y = IMG_SIZE * data->map.height;
+	data->win = mlx_new_window(data->mlx, data->window_x,
+			data->window_y, "So_long");
+	if (!data->win)
+		print_error_free(data, "Error initializing window\n");
+	ft_putstr_fd("\e[0;32mGame Is Lauching...\n\e[0m", 1);
+}
 
 /*This function initializes all the different images of
 the player in the data*/
@@ -73,26 +101,3 @@ static void	check_images_init(t_mlx_data *data)
 	}
 }
 
-/*This function initializes all the data needed for the
-logic of the game (map, images...)*/
-void	init_data(t_mlx_data *data, char *file_name)
-{
-	ft_bzero(data, sizeof(t_mlx_data));
-	data->keycode = W_KEY;
-	data->mlx = mlx_init();
-	if (!data->mlx)
-		print_error_free(data, "Error initializing mlx\n");
-	parse_map(data, file_name);
-	data->collectibles = count_collectibles(data);
-	check_map(data);
-	init_images(data);
-	check_images_init(data);
-	data->player.current_image = data->images[3];
-	data->window_x = IMG_SIZE * data->map.width;
-	data->window_y = IMG_SIZE * data->map.height;
-	data->win = mlx_new_window(data->mlx, data->window_x,
-			data->window_y, "So_long");
-	if (!data->win)
-		print_error_free(data, "Error initializing window\n");
-	ft_putstr_fd("\e[0;32mGame Is Lauching...\n\e[0m", 1);
-}

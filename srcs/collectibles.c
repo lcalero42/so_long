@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 23:52:57 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/28 13:23:33 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/30 18:41:03 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,4 @@ int	count_collectibles(t_mlx_data *data)
 		i++;
 	}
 	return (cpt);
-}
-
-/*This function returns if the player is allowed to take
-the exit by checking his number of collectibles*/
-int	can_exit(t_mlx_data *data)
-{
-	return (data->player.collectibles == data->collectibles);
 }

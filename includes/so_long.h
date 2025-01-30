@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 16:07:11 by luis              #+#    #+#             */
-/*   Updated: 2025/01/30 13:56:52 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/30 18:58:44 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # define MAX_HEIGHT 30
 
 # define BUFFER_SIZE 1
+
+# define WHITE 0xFFFFFF
 
 # define W_KEY 119
 # define A_KEY 97
@@ -79,8 +81,6 @@ void	init_data(t_mlx_data *data, char *file_name);
 
 void	find_player_pos(t_mlx_data *data, int *x, int *y);
 
-void	check_player_starting(t_mlx_data *data, char c, int i, int j);
-
 int		count_collectibles(t_mlx_data *data);
 
 //map parsing/rendering functions
@@ -89,8 +89,6 @@ int		render_map(t_map *map, t_mlx_data *data);
 int		parse_map(t_mlx_data *data, char *file_name);
 
 int		check_map(t_mlx_data *data);
-
-int		check_map_size(t_mlx_data *data);
 
 void	skip_newlines(char **line, int fd);
 
@@ -112,10 +110,6 @@ void	move(int x, int y, t_mlx_data *data, int keycode);
 
 void	determin_movement(t_mlx_data *data, int keycode);
 
-void	update_print_moves(t_mlx_data *data);
-
-int		can_exit(t_mlx_data *data);
-
 //window/error handling
 int		close_window(t_mlx_data *data);
 
@@ -133,5 +127,7 @@ int		loop(t_mlx_data *data);
 void	save_player_image(int keycode, t_mlx_data *data);
 
 t_image	get_player_texture(int keycode, t_mlx_data *data);
+
+void	update_print_moves(t_mlx_data *data);
 
 #endif

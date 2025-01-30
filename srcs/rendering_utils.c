@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 05:18:19 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/30 17:03:24 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/30 18:58:56 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	update_print_moves(t_mlx_data *data)
 		print_error_free(data, "Allocation Error\n");
 	}
 	mlx_string_put(data->mlx, data->win,
-		data->window_x - 100, 27, 0x000000, "Moves :");
+		data->window_x - 100, 27, WHITE, "Moves :");
 	mlx_string_put(data->mlx, data->win,
-		data->window_x - 25, 28, 0x000000, s);
+		data->window_x - 25, 28, WHITE, s);
 	free(s);
 }
 
