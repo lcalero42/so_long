@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 20:34:45 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/30 18:35:43 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/31 15:22:18 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,10 @@ int	check_map(t_mlx_data *data)
 width of the map is not too big*/
 static int	check_map_size(t_mlx_data *data)
 {
-	int	i;
-	int	j;
-
-	ft_putstr_fd("Checking map size...\n", 1);
-	i = 0;
-	while (data->map.grid[i])
+	if (IMG_SIZE * data->map.height > 1080 || IMG_SIZE * data->map.width > 1920)
 	{
-		if (i > MAX_HEIGHT)
-			print_error_free(data, "Error\nHeight too high\n");
-		j = 0;
-		while (data->map.grid[i][j])
-			j++;
-		if (j > MAX_WIDTH)
-			print_error_free(data, "Error\nWidth too high\n");
-		i++;
+		print_error_free(data, "Error\nSize of the map is too big\n");
+		return (0);
 	}
 	return (1);
 }
