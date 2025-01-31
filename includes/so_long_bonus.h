@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 16:07:11 by luis              #+#    #+#             */
-/*   Updated: 2025/01/31 17:03:52 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/01/31 17:04:56 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "../libft/libft.h"
 # include <fcntl.h>
 
-# define NUM_IMAGES 8
+# define NUM_IMAGES 9
 # define IMG_SIZE 64
 
 # define MAX_WIDTH 60
