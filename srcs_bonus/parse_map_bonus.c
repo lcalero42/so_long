@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:55:35 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/31 17:08:48 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/02/01 14:01:32 by luis             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static char	*ft_strjoin_free(char *s1, char *s2)
 	if (s2[j] == '\n')
 		j++;
 	res = malloc((len_s1 + j + 1) * sizeof(char));
-	if (res == NULL)
+	if (!res)
 		return (free(s1), NULL);
 	ft_memcpy(res, s1, len_s1);
 	ft_memcpy(res + len_s1, s2, j);

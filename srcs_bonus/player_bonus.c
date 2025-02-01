@@ -6,7 +6,7 @@
 /*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:35:25 by lcalero           #+#    #+#             */
-/*   Updated: 2025/02/01 05:04:58 by luis             ###   ########.fr       */
+/*   Updated: 2025/02/01 13:36:50 by luis             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,8 @@ static int	check_move(int x, int y, t_mlx_data *data)
 	return (1);
 }
 
-
+/*This function checks if the player is on lava, if yes, 
+It displays a game over message and it closes the window*/
 static int	check_player_state(t_mlx_data *data)
 {
 	if (data->map.grid[data->player.grid_y][data->player.grid_x] == 'K')

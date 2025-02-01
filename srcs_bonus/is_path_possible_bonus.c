@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_path_possible_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 02:07:24 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/31 17:08:29 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/02/01 14:02:53 by luis             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	is_path_possible(t_mlx_data *data)
 		return (print_error_free(data, "Error\nNo exit possible\n"), 0);
 	ft_putstr_fd("calculating if path is possible...\n", 1);
 	is_visited = malloc(sizeof(int *) * data->map.height);
+	if (!is_visited)
+		print_error_free(data, "Allocation Error\n");
 	init_visited(data, is_visited);
 	start_x = -1;
 	start_y = -1;
@@ -53,6 +55,8 @@ static int	is_exit_possible(t_mlx_data *data)
 
 	ft_putstr_fd("calculating if exit is possible...\n", 1);
 	is_visited = malloc(sizeof(int *) * data->map.height);
+	if (!is_visited)
+		print_error_free(data, "Allocation Error\n");
 	init_visited(data, is_visited);
 	start_x = -1;
 	start_y = -1;
