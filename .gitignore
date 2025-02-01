@@ -53,6 +53,7 @@ dkms.conf
 
 #project exe
 so_long
+so_long_bonus
 
 #folders
 objects
