@@ -6,7 +6,7 @@
 /*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:23:53 by lcalero           #+#    #+#             */
-/*   Updated: 2025/02/01 17:27:20 by luis             ###   ########.fr       */
+/*   Updated: 2025/02/01 17:31:37 by luis             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ logic of the game (map, images...)*/
 void	init_data(t_mlx_data *data, char *file_name)
 {
 	ft_bzero(data, sizeof(t_mlx_data));
-	data->keycode = W_KEY;
+	data->keycode = S_KEY;
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		print_error_free(data, "Error initializing mlx\n");
