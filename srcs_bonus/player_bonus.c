@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:35:25 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/31 17:08:50 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/02/01 05:04:58 by luis             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	move(int x, int y, t_mlx_data *data, int keycode)
 	}
 	if (data->map.grid[data->player.grid_y][data->player.grid_x] == 'E')
 		player_win(data);
-	check_player_state(data);
 }
 
 /*This functions determins which movement has been processed and
@@ -53,21 +52,25 @@ void	determin_movement(t_mlx_data *data, int keycode)
 	if (keycode == W_KEY || keycode == UP_ARROW)
 	{
 		move(0, -IMG_SIZE, data, keycode);
+		check_player_state(data);
 		data->map.grid[data->player.grid_y][data->player.grid_x] = 'P';
 	}
 	if (keycode == S_KEY || keycode == DOWN_ARROW)
 	{
 		move(0, IMG_SIZE, data, keycode);
+		check_player_state(data);
 		data->map.grid[data->player.grid_y][data->player.grid_x] = 'P';
 	}
 	if (keycode == A_KEY || keycode == LEFT_ARROW)
 	{
 		move(-IMG_SIZE, 0, data, keycode);
+		check_player_state(data);
 		data->map.grid[data->player.grid_y][data->player.grid_x] = 'P';
 	}
 	if (keycode == D_KEY || keycode == RIGHT_ARROW)
 	{
 		move(IMG_SIZE, 0, data, keycode);
+		check_player_state(data);
 		data->map.grid[data->player.grid_y][data->player.grid_x] = 'P';
 	}
 }
@@ -104,6 +107,9 @@ static int	check_player_state(t_mlx_data *data)
 {
 	if (data->map.grid[data->player.grid_y][data->player.grid_x] == 'K')
 	{
+		data->map.grid[data->player.grid_y][data->player.grid_x] = 'K';
+		render_map(&data->map, data);
+		usleep(2000000);
 		ft_putstr_fd("\e[1;31mGame Over : You stepped on lava !\n\e[0m", 1);
 		close_window(data);
 		return (1);
