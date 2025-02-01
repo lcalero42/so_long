@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 05:18:19 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/30 18:58:56 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/02/01 04:43:40 by luis             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,9 @@
 made and prints them in the shell*/
 void	update_print_moves(t_mlx_data *data)
 {
-	char	*s;
-
-	s = NULL;
-	s = ft_itoa(data->player.nb_moves);
-	if (!s)
-	{
-		free(s);
-		print_error_free(data, "Allocation Error\n");
-	}
-	mlx_string_put(data->mlx, data->win,
-		data->window_x - 100, 27, WHITE, "Moves :");
-	mlx_string_put(data->mlx, data->win,
-		data->window_x - 25, 28, WHITE, s);
-	free(s);
+	ft_putstr_fd("\e[1;36mMoves : \e[0m", 1);
+	ft_putnbr_fd(data->player.nb_moves, 1);
+	ft_putstr_fd("\n", 1);
 }
 
 /*This function prints a winning message with the number

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:23:53 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/31 17:08:26 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/02/01 04:08:26 by luis             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static void	init_player_images(t_mlx_data *data)
 			"ressources/player_4.xpm",
 			&data->images[6].width,
 			&data->images[6].height);
+	init_animations(data);
 }
 
 /*This function initializes all the different images 
@@ -93,6 +94,7 @@ static void	init_images(t_mlx_data *data)
 static void	check_images_init(t_mlx_data *data)
 {
 	int	i;
+	int	j;
 
 	ft_putstr_fd("Checking image initialization...\n", 1);
 	i = 0;
@@ -101,6 +103,19 @@ static void	check_images_init(t_mlx_data *data)
 		if (!data->images[i].img)
 			print_error_free(data,
 				"Error\nAn image has not been initialized\n");
+		i++;
+	}
+	i = 0;
+	while (i < 4)
+	{
+		j = 0;
+		while (j < NUM_ANIM)
+		{
+			if (!data->player.animations[i][j].img)
+				print_error_free(data,
+					"Error\nAn image has not been initialized\n");
+			j++;
+		}
 		i++;
 	}
 }

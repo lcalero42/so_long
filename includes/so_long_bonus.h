@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 16:07:11 by luis              #+#    #+#             */
-/*   Updated: 2025/01/31 17:04:56 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/02/01 04:49:15 by luis             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@
 # include <fcntl.h>
 
 # define NUM_IMAGES 9
+
+# define NUM_ANIM 2
+# define TOWARD_DIR 1
+# define BACKWARD_DIR 0
+# define LEFT_DIR 3
+# define RIGHT_DIR 2
+
 # define IMG_SIZE 64
 
 # define MAX_WIDTH 60
@@ -61,6 +68,7 @@ typedef struct s_player
 	int		collectibles;
 	int		nb_moves;
 	t_image	current_image;
+	t_image	animations[4][NUM_ANIM];
 }	t_player;
 
 typedef struct s_mlx_data
@@ -82,6 +90,8 @@ void	init_data(t_mlx_data *data, char *file_name);
 void	find_player_pos(t_mlx_data *data, int *x, int *y);
 
 int		count_collectibles(t_mlx_data *data);
+
+void    init_animations(t_mlx_data *data);
 
 //map parsing/rendering functions
 int		render_map(t_map *map, t_mlx_data *data);
@@ -121,13 +131,17 @@ int		key_hook(int keycode, t_mlx_data *data);
 
 void	ft_free(char **res);
 
+void    free_animations(t_mlx_data *data);
+
 //rendering
 int		loop(t_mlx_data *data);
 
 void	save_player_image(int keycode, t_mlx_data *data);
 
-t_image	get_player_texture(int keycode, t_mlx_data *data);
+t_image	render_player_texture(int keycode, t_mlx_data *data);
 
 void	update_print_moves(t_mlx_data *data);
+
+t_image    play_anim(t_mlx_data *data, int anim_index);
 
 #endif

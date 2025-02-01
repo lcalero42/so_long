@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:35:25 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/30 18:52:15 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/02/01 04:36:38 by luis             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,21 +52,25 @@ void	determin_movement(t_mlx_data *data, int keycode)
 	{
 		move(0, -IMG_SIZE, data, keycode);
 		data->map.grid[data->player.grid_y][data->player.grid_x] = 'P';
+		render_map(&data->map, data);
 	}
 	if (keycode == S_KEY || keycode == DOWN_ARROW)
 	{
 		move(0, IMG_SIZE, data, keycode);
 		data->map.grid[data->player.grid_y][data->player.grid_x] = 'P';
+		render_map(&data->map, data);
 	}
 	if (keycode == A_KEY || keycode == LEFT_ARROW)
 	{
 		move(-IMG_SIZE, 0, data, keycode);
 		data->map.grid[data->player.grid_y][data->player.grid_x] = 'P';
+		render_map(&data->map, data);
 	}
 	if (keycode == D_KEY || keycode == RIGHT_ARROW)
 	{
 		move(IMG_SIZE, 0, data, keycode);
 		data->map.grid[data->player.grid_y][data->player.grid_x] = 'P';
+		render_map(&data->map, data);
 	}
 }
 
@@ -96,7 +100,6 @@ static int	check_move(int x, int y, t_mlx_data *data)
 		return (0);
 	return (1);
 }
-
 
 /*This function returns if the player is allowed to take
 the exit by checking his number of collectibles*/

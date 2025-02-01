@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_error_free_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 21:33:51 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/31 17:08:56 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/02/01 03:30:40 by luis             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	print_error_free(t_mlx_data *data, char *s)
 			mlx_destroy_image(data->mlx, data->images[i].img);
 		i++;
 	}
+	free_animations(data);
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
 	if (data->mlx)

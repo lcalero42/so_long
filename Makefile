@@ -11,14 +11,13 @@ BLUE = \033[34m
 CYAN = \033[36m
 BOLD = \033[1m
 
-# Source files
 SRCS = srcs/main.c srcs/init_data.c srcs/parse_map.c libft/get_next_line.c \
        srcs/close_window.c srcs/hook_handling.c srcs/player.c srcs/map_checkers.c \
        srcs/print_error_free.c srcs/collectibles.c srcs/is_path_possible.c \
        srcs/is_path_possible_utils.c srcs/rendering_utils.c libft/ft_bzero.c \
        libft/ft_strlen.c libft/ft_split.c libft/ft_itoa.c libft/ft_putnbr_fd.c \
        libft/ft_putstr_fd.c libft/ft_memcpy.c libft/ft_strdup.c libft/ft_strchr.c \
-       libft/ft_calloc.c libft/ft_putchar_fd.c libft/ft_strncmp.c srcs/loop.c \
+       libft/ft_calloc.c libft/ft_putchar_fd.c libft/ft_strncmp.c \
        srcs/player_rendering.c srcs/map_rendering.c
 
 SRCS_BONUS = srcs_bonus/main_bonus.c srcs_bonus/init_data_bonus.c srcs_bonus/parse_map_bonus.c \
@@ -29,7 +28,8 @@ SRCS_BONUS = srcs_bonus/main_bonus.c srcs_bonus/init_data_bonus.c srcs_bonus/par
        libft/ft_strlen.c libft/ft_split.c libft/ft_itoa.c libft/ft_putnbr_fd.c \
        libft/ft_putstr_fd.c libft/ft_memcpy.c libft/ft_strdup.c libft/ft_strchr.c \
        libft/ft_calloc.c libft/ft_putchar_fd.c libft/ft_strncmp.c srcs_bonus/loop_bonus.c \
-       srcs_bonus/player_rendering_bonus.c srcs_bonus/map_rendering_bonus.c libft/get_next_line.c
+       srcs_bonus/player_rendering_bonus.c srcs_bonus/map_rendering_bonus.c libft/get_next_line.c \
+	   srcs_bonus/play_animation_bonus.c
 
 HEADERS = includes/so_long.h libft/libft.h
 BONUS_HEADERS = includes/so_long_bonus.h libft/libft.h

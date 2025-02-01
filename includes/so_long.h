@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 16:07:11 by luis              #+#    #+#             */
-/*   Updated: 2025/01/31 17:03:52 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/02/01 04:45:31 by luis             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,6 @@ int		key_hook(int keycode, t_mlx_data *data);
 void	ft_free(char **res);
 
 //rendering
-int		loop(t_mlx_data *data);
 
 void	save_player_image(int keycode, t_mlx_data *data);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   close_window_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 19:20:25 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/31 17:08:11 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/02/01 03:30:55 by luis             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	close_window(t_mlx_data *data)
 			mlx_destroy_image(data->mlx, data->images[i].img);
 		i++;
 	}
+	free_animations(data);
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
 	mlx_loop_end(data->mlx);

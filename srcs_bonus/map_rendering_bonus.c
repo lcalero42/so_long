@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_rendering_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:36:58 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/31 17:08:45 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/02/01 03:19:05 by luis             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ static void	put_right_image(char c, t_mlx_data *data, int x, int y)
 			data->images[2].img, x, y);
 	else if (c == 'P' && data->images[3].img)
 	{
-		mlx_put_image_to_window(data->mlx, data->win,
-			get_player_texture(data->keycode, data).img, x, y);
+		render_player_texture(data->keycode, data);
 		data->player.pos_x = x;
 		data->player.pos_y = y;
 	}
@@ -72,7 +71,7 @@ static void	put_right_image(char c, t_mlx_data *data, int x, int y)
 		mlx_put_image_to_window(data->mlx, data->win,
 			data->images[8].img, x, y);
 	else
-		print_error_free(data, "Error\n Failed to load image\n");
+		print_error_free(data, "Error\nFailed to load image\n");
 }
 
 /*This function is used in the map parsing and checks
