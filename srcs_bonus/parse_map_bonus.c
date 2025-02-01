@@ -6,7 +6,7 @@
 /*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:55:35 by lcalero           #+#    #+#             */
-/*   Updated: 2025/02/01 14:01:32 by luis             ###   ########.fr       */
+/*   Updated: 2025/02/01 17:21:27 by luis             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ int	parse_map(t_mlx_data *data, char *file_name)
 	char	*res;
 
 	fd = open(file_name, O_RDONLY);
-	if (fd < 0)
-		print_error_free(data, "Error\nWrong entry file\n");
-	line = get_next_line(fd);
 	res = ft_strdup("");
+	if (fd < 0 || !res)
+		return (free(res), print_error_free(data, "Error\nWrong entry file\n"), 1);
+	line = get_next_line(fd);
 	while (line)
 	{
 		data->map.height++;
@@ -39,11 +39,11 @@ int	parse_map(t_mlx_data *data, char *file_name)
 		line = get_next_line(fd);
 	}
 	data->map.grid = ft_split(res, '\n');
-	if (!data->map.grid[0])
-		return (free(line), free(res), 1);
+	if (!data->map.grid[0] || !data)
+		return (free(line), free(res), close(fd), 0);
 	data->map.width = ft_strlen(data->map.grid[0]);
 	close(fd);
-	return (free(line), free(res), 0);
+	return (free(line), free(res), 1);
 }
 
 /*This function joins s1 and s2 string and frees s1 in the

@@ -6,7 +6,7 @@
 /*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 02:07:24 by lcalero           #+#    #+#             */
-/*   Updated: 2025/02/01 14:02:53 by luis             ###   ########.fr       */
+/*   Updated: 2025/02/01 16:55:55 by luis             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ static int	is_exit_possible(t_mlx_data *data)
 	return (is_exit_possible);
 }
 
-
 /*This function uses Depth-First-Search algorithm to mark all
 the boxes that can be visited by the player without counting the exit
 as an obstacle and then returns if the player can exit*/
@@ -118,7 +117,8 @@ static void	ft_free_visited(int **arr, t_mlx_data *data)
 	i = 0;
 	while (i < data->map.height)
 	{
-		free(arr[i]);
+		if (arr[i])
+			free(arr[i]);
 		i++;
 	}
 	free(arr);

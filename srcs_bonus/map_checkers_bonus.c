@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checkers_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 20:34:45 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/31 17:08:40 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/02/01 17:24:59 by luis             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ int	check_map(t_mlx_data *data)
 	int	i;
 	int	j;
 
-	if (!data->map.grid[0])
-		print_error_free(data, "Error\nEmpty map\n");
 	i = 0;
 	while (data->map.grid[i])
 	{

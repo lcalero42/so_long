@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:23:53 by lcalero           #+#    #+#             */
-/*   Updated: 2025/01/31 15:28:34 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/02/01 17:27:20 by luis             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	init_data(t_mlx_data *data, char *file_name)
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		print_error_free(data, "Error initializing mlx\n");
-	parse_map(data, file_name);
+	if (!parse_map(data, file_name))
+		print_error_free(data, "Error\nEmpty map\n");
 	data->collectibles = count_collectibles(data);
 	check_map(data);
 	init_images(data);

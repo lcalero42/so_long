@@ -6,7 +6,7 @@
 /*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 02:07:24 by lcalero           #+#    #+#             */
-/*   Updated: 2025/02/01 14:03:17 by luis             ###   ########.fr       */
+/*   Updated: 2025/02/01 16:42:35 by luis             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int	is_path_possible(t_mlx_data *data)
 	return (is_path_possible);
 }
 
-
 /*This function tests if the player can exit the given
 map, even if he can collect all the collectibles*/
 static int	is_exit_possible(t_mlx_data *data)
@@ -65,7 +64,6 @@ static int	is_exit_possible(t_mlx_data *data)
 	ft_free_visited(is_visited, data);
 	return (is_exit_possible);
 }
-
 
 /*This function uses Depth-First-Search algorithm to mark all
 the boxes that can be visited by the player without counting the exit
@@ -117,7 +115,8 @@ static void	ft_free_visited(int **arr, t_mlx_data *data)
 	i = 0;
 	while (i < data->map.height)
 	{
-		free(arr[i]);
+		if (arr[i])
+			free(arr[i]);
 		i++;
 	}
 	free(arr);
