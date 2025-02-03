@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:23:53 by lcalero           #+#    #+#             */
-/*   Updated: 2025/02/03 10:41:00 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/02/03 13:21:39 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ void	init_data(t_mlx_data *data, char *file_name)
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		print_error_free(data, "Error initializing mlx\n");
-	if (!parse_map(data, file_name))
-		print_error_free(data, "Error\nEmpty map\n");
+	parse_map(data, file_name);
 	data->collectibles = count_collectibles(data);
 	check_map(data);
 	init_images(data);

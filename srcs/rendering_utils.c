@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 05:18:19 by lcalero           #+#    #+#             */
-/*   Updated: 2025/02/03 12:28:52 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/02/03 13:19:44 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,31 @@ int	check_map_extension(char *s)
 		i++;
 	}
 	return (1);
+}
+
+void	check_end_of_file(char **line, int fd, char *res, t_mlx_data *data)
+{
+	char	*tmp;
+	int		i;
+
+	if (!line || !*line)
+		return ;
+	i = 0;
+	while (*line)
+	{
+		tmp = *line;
+		while (tmp[i])
+		{
+			if (tmp[i] != '\n')
+			{
+				free(res);
+				free(tmp);
+				close(fd);
+				print_error_free(data, "Error\nWrong Input\n");
+			}
+			i++;
+		}
+		*line = get_next_line(fd);
+		free(tmp);
+	}
 }

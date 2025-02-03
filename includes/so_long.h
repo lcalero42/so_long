@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 16:07:11 by luis              #+#    #+#             */
-/*   Updated: 2025/02/01 04:45:31 by luis             ###   ########.fr       */
+/*   Updated: 2025/02/03 13:19:57 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ int		parse_map(t_mlx_data *data, char *file_name);
 int		check_map(t_mlx_data *data);
 
 void	skip_newlines(char **line, int fd);
+
+void	check_end_of_file(char **line, int fd, char *res, t_mlx_data *data);
 
 int		check_map_extension(char *s);
 
