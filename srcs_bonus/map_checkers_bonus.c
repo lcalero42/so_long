@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checkers_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 20:34:45 by lcalero           #+#    #+#             */
-/*   Updated: 2025/02/01 17:24:59 by luis             ###   ########.fr       */
+/*   Updated: 2025/02/03 10:57:58 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,8 @@ static int	check_wrong_input(char c, int i, int j, t_mlx_data *data)
 		return (0);
 	if ((j == data->map.width - 1) && (c != '1'))
 		return (0);
-	if ((c != '1') && (c != '0') && (c != 'E') && (c != 'P') && (c != 'C') && (c != 'K'))
+	if ((c != '1') && (c != '0') && (c != 'E') && (c != 'P')
+		&& (c != 'C') && (c != 'K'))
 		return (0);
 	return (1);
 }

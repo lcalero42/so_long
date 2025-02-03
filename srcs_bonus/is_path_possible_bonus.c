@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   is_path_possible_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 02:07:24 by lcalero           #+#    #+#             */
-/*   Updated: 2025/02/01 16:55:55 by luis             ###   ########.fr       */
+/*   Updated: 2025/02/03 10:55:51 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
 static int	is_exit_possible(t_mlx_data *data);
-static int	is_traversable_exit(int x, int y, t_mlx_data *data, int **is_visited);
+static int	is_traversable_exit(int x, int y, t_mlx_data *data, int **arr);
 static int	dfs_exit(int x, int y, t_mlx_data *data, int **is_visited);
 static void	ft_free_visited(int **arr, t_mlx_data *data);
 
@@ -42,7 +42,6 @@ int	is_path_possible(t_mlx_data *data)
 	ft_free_visited(is_visited, data);
 	return (is_path_possible);
 }
-
 
 /*This function tests if the player can exit the given
 map, even if he can collect all the collectibles*/
@@ -101,10 +100,10 @@ static int	dfs_exit(int x, int y, t_mlx_data *data, int **is_visited)
 /*This functions checks if a position is traversable or not without
 counting the exit as an obstacle (useful to check if the player can exit
 after he has collected all the collectibles)*/
-static int	is_traversable_exit(int x, int y, t_mlx_data *data, int **is_visited)
+static int	is_traversable_exit(int x, int y, t_mlx_data *data, int **arr)
 {
 	return ((x >= 0) && (x < data->map.width) && (y < data->map.height)
-		&& (data->map.grid[y][x] != '1') && (!is_visited[y][x])
+		&& (data->map.grid[y][x] != '1') && (!arr[y][x])
 		&& (data->map.grid[y][x] != 'K'));
 }
 

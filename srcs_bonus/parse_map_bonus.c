@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:55:35 by lcalero           #+#    #+#             */
-/*   Updated: 2025/02/01 17:21:27 by luis             ###   ########.fr       */
+/*   Updated: 2025/02/03 10:58:12 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	parse_map(t_mlx_data *data, char *file_name)
 	fd = open(file_name, O_RDONLY);
 	res = ft_strdup("");
 	if (fd < 0 || !res)
-		return (free(res), print_error_free(data, "Error\nWrong entry file\n"), 1);
+		return (free(res), print_error_free(data, "Error\nWrong file\n"), 1);
 	line = get_next_line(fd);
 	while (line)
 	{

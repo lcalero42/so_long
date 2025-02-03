@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 16:07:11 by luis              #+#    #+#             */
-/*   Updated: 2025/02/01 04:49:15 by luis             ###   ########.fr       */
+/*   Updated: 2025/02/03 10:40:39 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include "../minilibx-linux/mlx.h"
 # include "../libft/libft.h"
@@ -91,7 +91,7 @@ void	find_player_pos(t_mlx_data *data, int *x, int *y);
 
 int		count_collectibles(t_mlx_data *data);
 
-void    init_animations(t_mlx_data *data);
+void	init_animations(t_mlx_data *data);
 
 //map parsing/rendering functions
 int		render_map(t_map *map, t_mlx_data *data);
@@ -131,7 +131,7 @@ int		key_hook(int keycode, t_mlx_data *data);
 
 void	ft_free(char **res);
 
-void    free_animations(t_mlx_data *data);
+void	free_animations(t_mlx_data *data);
 
 //rendering
 int		loop(t_mlx_data *data);
@@ -142,6 +142,6 @@ t_image	render_player_texture(int keycode, t_mlx_data *data);
 
 void	update_print_moves(t_mlx_data *data);
 
-t_image    play_anim(t_mlx_data *data, int anim_index);
+t_image	play_anim(t_mlx_data *data, int anim_index);
 
 #endif
