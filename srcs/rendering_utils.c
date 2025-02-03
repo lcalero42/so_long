@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luis <luis@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 05:18:19 by lcalero           #+#    #+#             */
-/*   Updated: 2025/02/01 04:43:40 by luis             ###   ########.fr       */
+/*   Updated: 2025/02/03 12:28:52 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	player_win(t_mlx_data *data)
 }
 
 /*This functions skips all the newlines in the file
-that is being read to be able to render the map even with
-newlines separating lines*/
+that is being read to be able to render the map even if it
+is starting with newlines*/
 void	skip_newlines(char **line, int fd)
 {
 	char	*tmp;

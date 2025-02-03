@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:55:35 by lcalero           #+#    #+#             */
-/*   Updated: 2025/02/03 10:58:12 by lcalero          ###   ########.fr       */
+/*   Updated: 2025/02/03 12:30:50 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ int	parse_map(t_mlx_data *data, char *file_name)
 	if (fd < 0 || !res)
 		return (free(res), print_error_free(data, "Error\nWrong file\n"), 1);
 	line = get_next_line(fd);
-	while (line)
+	skip_newlines(&line, fd);
+	while (line && *line != '\n')
 	{
 		data->map.height++;
 		tmp = line;
-		skip_newlines(&tmp, fd);
 		res = ft_strjoin_free(res, tmp);
 		free(tmp);
 		line = get_next_line(fd);
